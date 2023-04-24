@@ -24,7 +24,7 @@ using Choice = Ink.Runtime.Choice;
 using static System.Diagnostics.Trace;
 
 var start = DateTime.Now;
-var rootFolder = Assembly.GetEntryAssembly().Location + "\\..\\..\\..\\..\\..\\";
+var rootFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../../../");
 
 // Supported languages
 var languages = new List<string>()
@@ -45,11 +45,11 @@ var language = languages.Find((language) => language == defaultLanguage);
 
 Listeners.Clear();
 Listeners.Add(new ConsoleTraceListener());
-Listeners.Add(new TextWriterTraceListener($"{rootFolder}results\\{language}.txt"));
+Listeners.Add(new TextWriterTraceListener($"{rootFolder}results/{language}.txt"));
 AutoFlush = true;
 
 // Dumped level1 file with AssetRipper: https://github.com/AssetRipper/AssetRipper/releases
-var level1TextAssets = $"{rootFolder}data\\level1\\ExportedProject\\Assets\\TextAsset\\";
+var level1TextAssets = $"{rootFolder}data/level1/ExportedProject/Assets/TextAsset/";
 
 // These embedded files are JSON serialized ink stories.
 // They are prefixed in the order you would have to progress the game.
