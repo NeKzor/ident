@@ -21,11 +21,35 @@ using System.Linq;
 using System.Reflection;
 using Story = Ink.Runtime.Story;
 using Choice = Ink.Runtime.Choice;
+using static System.Diagnostics.Trace;
 
 var start = DateTime.Now;
+var rootFolder = Assembly.GetEntryAssembly().Location + "\\..\\..\\..\\..\\..\\";
+
+// Supported languages
+var languages = new List<string>()
+{
+    "Chinese (Simplified)",
+    "Chinese (Traditional)",
+    "English",
+    "French",
+    "German",
+    "Italian (Italy)",
+    "Japanese",
+    "Korean",
+    "Spanish (Castilian)",
+};
+
+var defaultLanguage = args.ElementAtOrDefault(2) ?? "English";
+var language = languages.Find((language) => language == defaultLanguage);
+
+Listeners.Clear();
+Listeners.Add(new ConsoleTraceListener());
+Listeners.Add(new TextWriterTraceListener($"{rootFolder}results\\{language}.txt"));
+AutoFlush = true;
 
 // Dumped level1 file with AssetRipper: https://github.com/AssetRipper/AssetRipper/releases
-var level1TextAssets = Assembly.GetEntryAssembly().Location + "\\..\\..\\..\\..\\..\\data\\level1\\ExportedProject\\Assets\\TextAsset\\";
+var level1TextAssets = $"{rootFolder}data\\level1\\ExportedProject\\Assets\\TextAsset\\";
 
 // These embedded files are JSON serialized ink stories.
 // They are prefixed in the order you would have to progress the game.
@@ -80,23 +104,6 @@ var conversations = new List<string>()
     //"a3_x_lastVaultVisit",
 };
 
-// Supported languages
-var languages = new List<string>()
-{
-    "Chinese (Simplified)",
-    "Chinese (Traditional)",
-    "English",
-    "French",
-    "German",
-    "Italian (Italy)",
-    "Japanese",
-    "Korean",
-    "Spanish (Castilian)",
-};
-
-// For now let's only focus on the English language :)
-var language = languages.Find((language) => language == "English");
-
 // Calculating the shortest path is cheap if we ignore the context of the whole story.
 // However, it gets more complicated to add choices from previous conversations as context.
 // This means we have to save all consequences after one story ends and then set them again
@@ -119,7 +126,7 @@ foreach (var conversation in conversations)
     var file = $"{level1TextAssets}{conversation}_{language}.json";
     var filename = Path.GetFileName(file);
 
-    Console.WriteLine($"Processing {conversation}");
+    WriteLine($"Processing {conversation}");
 
     var story = new Story(File.ReadAllText(file));
     InitConsequences(story);
@@ -240,20 +247,20 @@ foreach (var conversation in conversations)
         bestPath = best.Paths.First();
     }
 
-    Console.WriteLine("Globals:");
+    WriteLine("Globals:");
     foreach (var variable in bestPath.GlobalVariables)
-        Console.WriteLine($"{variable.Key} = {variable.Value}");
+        WriteLine($"{variable.Key} = {variable.Value}");
 
-    Console.WriteLine("Example:");
+    WriteLine("Example:");
     var current = bestPath;
     while (current != default)
     {
         if (current.Previous?.HasChoices ?? false)
-            Console.WriteLine($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id} ");
+            WriteLine($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id} ");
         current = current.Next;
     }
 
-    Console.WriteLine();
+    WriteLine("");
 
     // Save consequences for next conversation
     globals = bestPath.GlobalVariables;
@@ -266,17 +273,17 @@ foreach (var conversation in conversations)
     //        if (tempGlobal.TryGetValue(global.Key, out var value))
     //        {
     //            if (value != global.Value)
-    //                Console.WriteLine($"different global {global.Key} = {value} -> {global.Value}");
+    //                WriteLine($"different global {global.Key} = {value} -> {global.Value}");
     //        }
     //        else
     //            tempGlobal[global.Key] = global.Value;
     //    }
     //}
-    //Console.WriteLine();
+    //WriteLine();
 }
 
-Console.WriteLine($"Keypresses: {totalKeyPresses}");
-Console.WriteLine($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} minutes");
+WriteLine($"Keypresses: {totalKeyPresses}");
+WriteLine($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} minutes");
 
 // The ink framework does not have an undo feature.
 // This means we have to reset the story, go back to the head node and
@@ -370,12 +377,12 @@ Console.WriteLine($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} mi
         else if (count == shortest)
             best.Add(path);
 
-        //Console.WriteLine("\nResult: " + count);
+        //WriteLine("\nResult: " + count);
     }
 
-    Console.WriteLine("Total permutations: " + paths.Count);
-    Console.WriteLine("Best outcome:       " + shortest + " keypresses");
-    Console.WriteLine("Best permutations:  " + best.Count);
+    WriteLine("Total permutations: " + paths.Count);
+    WriteLine("Best outcome:       " + shortest + " keypresses");
+    WriteLine("Best permutations:  " + best.Count);
 
     return (best, shortest);
 }
