@@ -105,7 +105,7 @@ var conversations = new List<string>()
     //"a2_x_lobbyReturn",
     //"a2_x_vaultReturn",
     "a3_s1_alt1_admin",
-    // "a3_s1_alt2_grishInLobby",
+    //"a3_s1_alt2_grishInLobby", // Talking to Grish is slower :^)
     "a3_s2_a_culminationLandingPad",
     "a3_s2_b_culminationLandingPadPostGame",
     "a3_s2_c_culminationLandingPadPostPostGame",
