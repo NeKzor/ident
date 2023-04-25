@@ -8,15 +8,15 @@
 
 |Language|Best solution (in keypresses)|
 |---|:-:|
-|English|1384|
-|Chinese (Simplified)|1384|
-|Chinese (Traditional)|1384|
-|French|1384|
-|German|1384|
-|Italian (Italy)|1384|
-|Japanese|1384|
-|Korean|1384|
-|Spanish (Castilian)|1384|
+|English|1294|
+|Chinese (Simplified)|1294|
+|Chinese (Traditional)|1294|
+|French|1294|
+|German|1294|
+|Italian (Italy)|1294|
+|Japanese|1294|
+|Korean|1294|
+|Spanish (Castilian)|1294|
 
 ## Caveats
 
