@@ -53,9 +53,13 @@ if (language == default)
     return;
 }
 
+var resultsFile = $"{rootFolder}results/{language}.txt";
+if (File.Exists(resultsFile))
+    File.Delete(resultsFile);
+
 Listeners.Clear();
 Listeners.Add(new ConsoleTraceListener());
-Listeners.Add(new TextWriterTraceListener($"{rootFolder}results/{language}.txt"));
+Listeners.Add(new TextWriterTraceListener(resultsFile));
 AutoFlush = true;
 
 // Dumped level1 file with AssetRipper: https://github.com/AssetRipper/AssetRipper/releases
