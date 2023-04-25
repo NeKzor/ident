@@ -167,7 +167,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _ExplainedHerTarget = 0
 Example:
@@ -192,7 +192,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _haveVisitedCassActTwo = 1
 _haveVisitedSierraActTwo = 0
@@ -217,285 +217,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
-_FreedSierra = 0
-_AgreedToHelpProxy = 0
-_haveVisitedSierraActTwo = 0
-_haveVisitedGrishActTwo = 0
-_haveVisitedAdminActTwo = 0
-Example:
-[0] * Und? 
-[0] * Es ist in Ordnung. 
-[1] * Du warst allein? 
-[0] * Die Explosion wurde aus der Ferne ausgelöst? 
-[0] * Wir machen Fortschritte. 
-
-Processing a2_s3_sierras question
-Processing a1_s1_exteriorIntro
-Total permutations: 108
-Best outcome:       40 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-Example:
-[0] * Ja 
-[0] * Stehen bleiben. 
-[0] * Nichts, womit ich nicht umgehen könnte. 
-[0] * Sei gegrüßt, Programm. 
-[0] * Es wäre einfacher, wenn wir zusammenarbeiten würden. 
-
-Processing a1_s2_a_lobbyFirstHangout
-Total permutations: 4536
-Best outcome:       52 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-Example:
-[0] * Wo sind denn alle? 
-[0] * Gefangene? 
-[0] * Was für Nachforschungen? 
-[0] * Wenn ich gerufen werde, komme ich, Programm. 
-[0] * Eine Explosion? 
-[0] * Wie hoch ist dieses Gebäude? 
-[0] * Gibt es ein Problem? 
-[0] * Erinnerungen? 
-[0] * Das kann ich. 
-
-Processing a1_s2_b_lobbyFirstHangoutPostGame
-Total permutations: 135
-Best outcome:       29 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-_askedKernelToHelp = 0
-Example:
-[0] * Danke. 
-[0] * Diese Entscheidung liegt nicht bei dir. 
-[0] * Du würdest dich Prinz widersetzen? 
-[1] * Ich arbeite allein. 
-[0] * Tut mir leid. 
-
-Processing a1_s3_adminOfficeFirstMeeting
-Processing a1_s1_exteriorIntro
-Total permutations: 108
-Best outcome:       40 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-Example:
-[0] * Ja 
-[0] * Stehen bleiben. 
-[0] * Nichts, womit ich nicht umgehen könnte. 
-[0] * Sei gegrüßt, Programm. 
-[0] * Es wäre einfacher, wenn wir zusammenarbeiten würden. 
-
-Processing a1_s2_a_lobbyFirstHangout
-Total permutations: 4536
-Best outcome:       52 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-Example:
-[0] * Wo sind denn alle? 
-[0] * Gefangene? 
-[0] * Was für Nachforschungen? 
-[0] * Wenn ich gerufen werde, komme ich, Programm. 
-[0] * Eine Explosion? 
-[0] * Wie hoch ist dieses Gebäude? 
-[0] * Gibt es ein Problem? 
-[0] * Erinnerungen? 
-[0] * Das kann ich. 
-
-Processing a1_s2_b_lobbyFirstHangoutPostGame
-Total permutations: 135
-Best outcome:       29 keypresses
-Best permutations:  2
-Globals:
-_kernelSawYouDodge = 0
-_askedKernelToHelp = 0
-Example:
-[0] * Danke. 
-[0] * Diese Entscheidung liegt nicht bei dir. 
-[0] * Du würdest dich Prinz widersetzen? 
-[1] * Ich arbeite allein. 
-[0] * Tut mir leid. 
-
-Processing a1_s3_adminOfficeFirstMeeting
-Total permutations: 10368
-Best outcome:       71 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectCounter = 5
-_respectShownToAdmin = 1
-Example:
-[0] * Ein guter Ruf ist das A und O. 
-[0] * Du hast mich nicht angeheuert, um über Schreibtische zu reden. 
-[0] * Ich kämpfe für die User. 
-[0] * Wir verdanken ihm alles. 
-[0] * Man kann nicht jeden retten. 
-[1] * Können wir uns bitte dem Fall widmen? 
-[0] * Was war im Tresor? 
-[0] * Ich beginne mit dem Tresor. 
-
-Processing a1_s4_firstVisitToLibrary
-Total permutations: 7290
-Best outcome:       94 keypresses
-Best permutations:  2
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
-_SierraOpinionTracker = 2
-Example:
-[0] * So etwas habe ich noch nie gesehen. 
-[0] * Das verstehe ich nicht. 
-[0] * Ist das eine Fangfrage? 
-[3] * Machen wir weiter. 
-[0] * Um am Himmel anzuklopfen und dem Klang zu lauschen? 
-[0] * Ich lese. 
-[0] * Sei gegrüßt. 
-[0] * Ja. Tut mir leid, dass ich dich angestarrt habe. 
-[0] * Du siehst aus wie ein … User? 
-[0] * Ich glaube nicht, dass du etwas getan hast. 
-
-Processing a1_s5_a_firstCassEncounter
-Total permutations: 27
-Best outcome:       30 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 1
-_IntroducedSelf = 0
-Example:
-[0] * Hey, wie heißt du? 
-[0] * Bist du verwirrt? 
-[0] * Keineswegs. 
-
-Processing a1_s5_b_firstCassEncounterPostGame
-Total permutations: 128
-Best outcome:       38 keypresses
-Best permutations:  2
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 1
-Example:
-[0] * Woran erinnerst du dich? 
-[0] * Ein Programm? War noch jemand hier vor der Explosion? 
-[0] * Ich bin ein Detektiv, ich löse Rätsel. 
-[0] * Na ja, um die Explosion. 
-[0] * Ich komme bald wieder. 
-
-Processing a1_s6_a_returnToAdmin
-Total permutations: 162
-Best outcome:       35 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 1
-Example:
-[0] * Es ist schön, wieder hier zu sein. 
-[0] * Das scheint so zu sein. 
-[0] * Wurde dieser Ort nicht gebaut, damit sie unwissend bleiben? 
-[0] * Ich habe mit der Bibliothekarin gesprochen. 
-[0] * Das kann ich. 
-
-Processing a1_s6_b_returnToAdminPostGame
-Total permutations: 180
-Best outcome:       51 keypresses
-Best permutations:  2
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_accusedToAdmin = 0
-Example:
-[0] * Dafür ist es noch zu früh. 
-[0] * So lange wie nötig. 
-[3] * Keine weiteren Fragen. 
-[0] * Ja. 
-[0] * Bei dem Namen klingelt es. 
-[0] * Also gut. 
-
-Processing a2_s1_landingPadProxyArrives
-Total permutations: 3888
-Best outcome:       99 keypresses
-Best permutations:  4
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
-_AgreedToHelpProxy = 0
-_ExplainedHerTarget = 0
-Example:
-[1] * Ich nenne Kriminellen nicht meine persönliche Kennung, während ich an einem Fall arbeite. 
-[0] * Ich weiß, dass du eine Diebin bist. 
-[0] * Schieß los. 
-[0] * Du weißt, was passiert ist. 
-[0] * Er hat mir bei den Ermittlungen geholfen. 
-[0] * Warum erzählst du mir das? 
-[3] * Machen wir weiter. 
-[0] * Das kann ich nicht. 
-[0] * Du gehst da nicht rein. 
-[0] * Wirf deinen Diskus auf Proxy. 
-
-Processing a2_s2_a_returnToCass
-Total permutations: 1458
-Best outcome:       50 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
-_AgreedToHelpProxy = 0
-_haveVisitedCassActTwo = 1
-_haveVisitedSierraActTwo = 0
-_haveVisitedGrishActTwo = 0
-_haveVisitedAdminActTwo = 0
-Example:
-[0] * Geht es dir gut? 
-[0] * Ja. 
-[0] * In der Tat. 
-[0] * Es ist eine Menge Macht im Spiel. 
-[0] * Das heißt … 
-[0] * Wir müssen herausfinden, was gestohlen wurde. 
-[0] * Hast du Angst? 
-
-Processing a2_s2_b_returnToCassPostGame
-Total permutations: 405
-Best outcome:       42 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 0
-_toldAdminAlignment = 0
-_respectShownToAdmin = 1
-_haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
 _FreedSierra = 0
 _AgreedToHelpProxy = 0
 _haveVisitedSierraActTwo = 0
@@ -518,7 +240,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _haveVisitedCassActTwo = 1
 _haveVisitedSierraActTwo = 1
@@ -565,10 +287,10 @@ Best permutations:  1
 Globals:
 _askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
+_respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _haveVisitedCassActTwo = 1
@@ -605,12 +327,12 @@ Total permutations: 432
 Best outcome:       61 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -629,12 +351,12 @@ Total permutations: 27
 Best outcome:       29 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -648,12 +370,12 @@ Total permutations: 864
 Best outcome:       50 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -671,12 +393,12 @@ Total permutations: 324
 Best outcome:       52 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -693,12 +415,12 @@ Total permutations: 4
 Best outcome:       23 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -711,12 +433,12 @@ Total permutations: 54
 Best outcome:       50 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -729,15 +451,15 @@ Example:
 
 Processing a3_s1_alt1_admin
 Total permutations: 40824
-Best outcome:       80 keypresses
+Best outcome:       81 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -754,44 +476,17 @@ Example:
 [0] * Wir können lernen, es zu kontrollieren. 
 [0] * Du wirst mir erlauben, Cass von hier fortzubringen? 
 
-Processing a3_s1_alt2_grishInLobby
-Total permutations: 118098
-Best outcome:       89 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 1
-_toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_SierraFirstImpression = 0
-_AgreedToHelpProxy = 0
-_FreedSierra = 0
-_AdminDied = 0
-_kernelSawYouDodge = 0
-Example:
-[0] * Beruhige dich. 
-[0] * Hhrmmmf. 
-[0] * HHRMMMF! 
-[0] * Ich sagte, ich bin nicht dein Feind. 
-[0] * Genau. 
-[0] * Xier muss gerettet werden. 
-[0] * Cass ist nicht kriminell. 
-[0] * Cass hat mir etwas Schreckliches gesagt. 
-[0] * Tu es. 
-[0] * Ich muss xiem helfen, Grish. 
-[0] * Das hätte Prinz dir nicht erlaubt. 
-[0] * Bis dann, Programm. 
-
 Processing a3_s2_a_culminationLandingPad
 Total permutations: 81
 Best outcome:       33 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -807,12 +502,12 @@ Total permutations: 270
 Best outcome:       38 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -824,28 +519,27 @@ Example:
 [0] * Ich kann dich beschützen. 
 
 Processing a3_s2_c_culminationLandingPadPostPostGame
-Total permutations: 810
-Best outcome:       42 keypresses
+Total permutations: 2124
+Best outcome:       40 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
-_CassEnding = 0
+_CassEnding = -1
 _GrishDied = 0
 Example:
 [0] * Überwältigend. 
 [0] * Du benimmst dich, als würdest du es nicht schaffen. 
-[1] * Vielleicht, wenn wir lang genug hier draußen sind. 
-[2] * Es ist vielleicht am sichersten, wenn du zurück zum Tresor gehst. 
-[0] * Ich sagte doch, es ist sicherer. 
-[0] * Das ist es. 
+[0] * Was ist los, Grish? 
+[2] * Also gut. 
+[1] * Es tut mir leid, Cass. 
 
 Processing a3_s3_anExit
 Total permutations: 1
@@ -853,20 +547,20 @@ Best outcome:       26 keypresses
 Best permutations:  1
 Globals:
 _kernelSawYouDodge = 0
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _accusedToAdmin = 0
 _AdminDied = 0
-_CassEnding = 0
+_CassEnding = -1
 _GrishDied = 0
 _characterOptionsRead = 0
 _learningOptionsRead = 0
 Example:
 [3] * Du bist bereit, zu gehen. 
 
-Keypresses: 1384
-Calculation took 4.48 minutes
+Keypresses: 1294
+Calculation took 2.38 minutes

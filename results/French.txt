@@ -167,7 +167,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _ExplainedHerTarget = 0
 Example:
@@ -192,7 +192,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _haveVisitedCassActTwo = 1
 _haveVisitedSierraActTwo = 0
@@ -217,7 +217,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _FreedSierra = 0
 _AgreedToHelpProxy = 0
 _haveVisitedSierraActTwo = 0
@@ -240,7 +240,7 @@ _toldAdminAlignment = 0
 _respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
-_SierraFirstImpression = 0
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _haveVisitedCassActTwo = 1
 _haveVisitedSierraActTwo = 1
@@ -287,10 +287,10 @@ Best permutations:  1
 Globals:
 _askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
+_respectShownToAdmin = 1
 _haveVisitedCassActOne = 1
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _haveVisitedCassActTwo = 1
@@ -327,12 +327,12 @@ Total permutations: 432
 Best outcome:       61 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -351,12 +351,12 @@ Total permutations: 27
 Best outcome:       29 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -370,12 +370,12 @@ Total permutations: 864
 Best outcome:       50 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -393,12 +393,12 @@ Total permutations: 324
 Best outcome:       52 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -415,12 +415,12 @@ Total permutations: 4
 Best outcome:       23 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -433,12 +433,12 @@ Total permutations: 54
 Best outcome:       50 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -451,15 +451,15 @@ Example:
 
 Processing a3_s1_alt1_admin
 Total permutations: 40824
-Best outcome:       80 keypresses
+Best outcome:       81 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -476,44 +476,17 @@ Example:
 [0] * On peut apprendre à contrôler sa réaction. 
 [0] * Vous me laisserez libérer Cass ? 
 
-Processing a3_s1_alt2_grishInLobby
-Total permutations: 118098
-Best outcome:       89 keypresses
-Best permutations:  1
-Globals:
-_askedKernelToHelp = 1
-_toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_SierraFirstImpression = 0
-_AgreedToHelpProxy = 0
-_FreedSierra = 0
-_AdminDied = 0
-_kernelSawYouDodge = 0
-Example:
-[0] * Du calme. 
-[0] * Hhrmmmf. 
-[0] * HHRMMMF ! 
-[0] * Je disais que je ne suis pas votre ennemi. 
-[0] * C'est vrai. 
-[0] * Il faut sauver Cass. 
-[0] * Cass n'a commis aucun crime. 
-[0] * Cass m'a dit une chose terrifiante. 
-[0] * Le faire 
-[0] * Je dois l'aider, Grish. 
-[0] * Prinz ne vous aurait pas laissé faire. 
-[0] * Au revoir, programme. 
-
 Processing a3_s2_a_culminationLandingPad
 Total permutations: 81
 Best outcome:       33 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -529,12 +502,12 @@ Total permutations: 270
 Best outcome:       38 keypresses
 Best permutations:  2
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
@@ -546,28 +519,27 @@ Example:
 [0] * Je peux vous protéger. 
 
 Processing a3_s2_c_culminationLandingPadPostPostGame
-Total permutations: 810
-Best outcome:       42 keypresses
+Total permutations: 2124
+Best outcome:       40 keypresses
 Best permutations:  1
 Globals:
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_haveVisitedCassActOne = 0
-_haveVisitedSierraActOne = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_haveVisitedCassActOne = 1
+_haveVisitedSierraActOne = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
-_CassEnding = 0
+_CassEnding = -1
 _GrishDied = 0
 Example:
 [0] * Accablé. 
 [0] * Vous agissez comme si vous n'alliez pas vous en sortir. 
-[1] * Peut-être, si on s'attarde ici trop longtemps. 
-[2] * Il vaudrait peut-être mieux retourner à la chambre forte. 
-[0] * Je dis juste que ce serait plus sûr. 
-[0] * C'est ce que je veux. 
+[0] * Qu'est-ce qui ne va pas, Grish ? 
+[2] * D'accord. 
+[1] * Je suis désolé, Cass. 
 
 Processing a3_s3_anExit
 Total permutations: 1
@@ -575,20 +547,20 @@ Best outcome:       26 keypresses
 Best permutations:  1
 Globals:
 _kernelSawYouDodge = 0
-_askedKernelToHelp = 1
+_askedKernelToHelp = 0
 _toldAdminAlignment = 0
-_respectShownToAdmin = 0
-_SierraFirstImpression = 0
+_respectShownToAdmin = 1
+_SierraFirstImpression = 1
 _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _accusedToAdmin = 0
 _AdminDied = 0
-_CassEnding = 0
+_CassEnding = -1
 _GrishDied = 0
 _characterOptionsRead = 0
 _learningOptionsRead = 0
 Example:
 [3] * Vous êtes prêt à partir. 
 
-Keypresses: 1384
-Calculation took 4.48 minutes
+Keypresses: 1294
+Calculation took 2.41 minutes
