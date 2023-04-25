@@ -591,4 +591,4 @@ Example:
 [3] * You're ready to leave. 
 
 Keypresses: 1384
-Calculation took 4.55 minutes
+Calculation took 3.19 minutes
