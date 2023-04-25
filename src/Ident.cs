@@ -315,8 +315,9 @@ foreach (var conversation in conversations)
 
     WriteLine("");
 
-    // Save consequences for next conversation
-    globals = bestPath.GlobalVariables;
+    // Save consequences for next conversations
+    foreach (var global in bestPath.GlobalVariables)
+        globals[global.Key] = global.Value;
 
     //var tempGlobal = new Dictionary<string, string>(best.Paths.First().GlobalVariables);
     //foreach (var bestPath in best.Paths)
