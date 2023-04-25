@@ -154,6 +154,28 @@ foreach (var conversation in conversations)
     // Keep track of all possible story lines.
     var paths = new List<Node>() { path };
 
+    var bestScore = int.MaxValue;
+    var totalPossiblePaths = 0;
+
+    // Only keep the shortest paths that lead to the least amount of keypresses
+    void RemovePathIfNotGoodEnough()
+    {
+        totalPossiblePaths += 1;
+        var newPaths = new List<Node>();
+
+        foreach (var path in paths)
+        {
+            var score = path.Score;
+            if (score > bestScore)
+                continue;
+
+            newPaths.Add(path);
+            bestScore = score;
+        }
+
+        paths = newPaths;
+    }
+
     // Stories begins here.
     // Choices have to be made before we can continue a story.
     // A story ends if there is nothing left to continue.
@@ -173,7 +195,10 @@ foreach (var conversation in conversations)
                     path = rewinded.Path;
 
                     if (!path.HasVisitedAllChoices)
+                    {
+                        totalPossiblePaths += 1;
                         paths.Add(rewinded.Head);
+                    }
                 }
                 else
                     break;
@@ -218,7 +243,10 @@ foreach (var conversation in conversations)
             path = rewinded.Path;
 
             if (!path.HasVisitedAllChoices)
+            {
+                RemovePathIfNotGoodEnough();
                 paths.Add(rewinded.Head);
+            }
 
             if (story.canContinue)
                 story.Continue();
@@ -229,36 +257,47 @@ foreach (var conversation in conversations)
         break;
     }
 
-    var best = GetBestOutcome(paths);
-    totalKeyPresses += best.Score;
+    RemovePathIfNotGoodEnough();
+
+    if (paths.Count((path) => path.GlobalVariables.Count > 0) != paths.Count)
+        throw new Exception("failed to save global variables");
+
+    if (paths.Any((path) => path.Score != bestScore))
+        throw new Exception("failed to filter best paths");
+
+    WriteLine($"Total permutations: {totalPossiblePaths}");
+    WriteLine($"Best outcome:       {bestScore} keypresses");
+    WriteLine($"Best permutations:  {paths.Count}");
+
+    totalKeyPresses += bestScore;
 
     var bestPath = default(Node);
 
     // Choose a better outcome determined by manual observation
     if (conversation == "a1_s2_b_lobbyFirstHangoutPostGame")
     {
-        if (best.Paths.Count != 2)
+        if (paths.Count != 2)
             throw new Exception($"outcome of {conversation} would not match previous observation");
 
-        bestPath = best.Paths.Find((best) => best.GlobalVariables["_askedKernelToHelp"] == "0");
+        bestPath = paths.Find((best) => best.GlobalVariables["_askedKernelToHelp"] == "0");
     }
     //else if (conversation == "a1_s4_firstVisitToLibrary")
     //{
-    //    if (best.Paths.Count != 2)
+    //    if (paths.Count != 2)
     //        throw new Exception($"outcome of {conversation} would not match previous observation");
 
-    //    bestPath = best.Paths.Find((best) => best.GlobalVariables["_SierraOpinionTracker"] == "0");
+    //    bestPath = paths.Find((best) => best.GlobalVariables["_SierraOpinionTracker"] == "0");
     //}
     //else if (conversation == "a1_s6_b_returnToAdminPostGame")
     //{
-    //    if (best.Paths.Count != 2)
+    //    if (paths.Count != 2)
     //        throw new Exception($"outcome of {conversation} would not match previous observation");
 
-    //    bestPath = best.Paths.Find((best) => best.GlobalVariables["_accusedToAdmin"] == "3");
+    //    bestPath = paths.Find((best) => best.GlobalVariables["_accusedToAdmin"] == "3");
     //}
     else
     {
-        bestPath = best.Paths.First();
+        bestPath = paths.First();
     }
 
     WriteLine("Globals:");
@@ -356,51 +395,6 @@ WriteLine($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} minutes");
     return (clonedHead, path);
 }
 
-// Filter out the shortest paths that lead to the least amount of keypresses
-(List<Node> Paths, int Score) GetBestOutcome(List<Node> paths)
-{
-    var best = new List<Node>();
-    var shortest = int.MaxValue;
-
-    if (paths.Count((path) => path.GlobalVariables.Count > 0) != paths.Count)
-        throw new Exception("failed to save global variables");
-
-    foreach (var path in paths)
-    {
-        var count = 0;
-        var current = path;
-
-        while (current != default)
-        {
-            //if (current.Previous?.HasChoices ?? false)
-            //    Console.Write($"[{current.Index}] {current.Id} ");
-
-            count += current.Previous?.HasChoices ?? false
-                ? current.Previous.VisitedChoices.Count
-                : 1;
-
-            current = current.Next;
-        }
-
-        if (count < shortest)
-        {
-            best.Clear();
-            best.Add(path);
-            shortest = count;
-        }
-        else if (count == shortest)
-            best.Add(path);
-
-        //WriteLine("\nResult: " + count);
-    }
-
-    WriteLine("Total permutations: " + paths.Count);
-    WriteLine("Best outcome:       " + shortest + " keypresses");
-    WriteLine("Best permutations:  " + best.Count);
-
-    return (best, shortest);
-}
-
 // A node can be seen as a progress/choose keypress.
 // It's either a choice (MaxChoices > 0) or just story text (MaxChoices = 0).
 // Nodes within a story are connected via a doubly-linked list.
@@ -468,6 +462,24 @@ class Node
             while (previous != default && !previous.HasChoices)
                 previous = previous.Previous;
             return previous;
+        }
+    }
+
+    // Get the amount of keypresses of current story line.
+    public int Score
+    {
+        get
+        {
+            var count = 0;
+            var current = this;
+            while (current != default)
+            {
+                count += current.Previous?.HasChoices ?? false
+                    ? current.Previous.VisitedChoices.Count
+                    : 1;
+                current = current.Next;
+            }
+            return count;
         }
     }
 
