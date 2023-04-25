@@ -22,7 +22,6 @@
 
 * The algorithm cannot predict consequences of "worse" choices with a better outcome.
 * It currently takes minutes to get a result.
-* A single process wastes about 2 GB of ram lol.
 
 ## Run locally
 
