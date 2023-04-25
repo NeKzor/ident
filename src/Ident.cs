@@ -40,8 +40,18 @@ var languages = new List<string>()
     "Spanish (Castilian)",
 };
 
-var defaultLanguage = args.ElementAtOrDefault(2) ?? "English";
+var defaultLanguage = args.ElementAtOrDefault(0) ?? "English";
 var language = languages.Find((language) => language == defaultLanguage);
+
+if (language == default)
+{
+    Console.WriteLine("Supported languages:");
+
+    foreach (var supportedLanguage in languages)
+        Console.WriteLine($"  - {supportedLanguage}");
+
+    return;
+}
 
 Listeners.Clear();
 Listeners.Add(new ConsoleTraceListener());
