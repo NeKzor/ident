@@ -5,11 +5,11 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Yes 
-[0] * Hold your ground. 
-[0] * Nothing I can't handle. 
-[0] * Greetings, program. 
-[0] * This'll be easier if you work with me. 
+[0] * Sí. 
+[0] * Permanecer inmóvil. 
+[0] * Nada que me asuste. 
+[0] * Saludos, programa. 
+[0] * Será más fácil si colaboras. 
 
 Processing a1_s2_a_lobbyFirstHangout
 Total permutations: 4536
@@ -18,15 +18,15 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Where is everyone? 
-[0] * Prisoner? 
-[0] * Investigating what? 
-[0] * I get the call, I run, program. 
-[0] * An explosion? 
-[0] * How tall is this building? 
-[0] * Is there a problem? 
-[0] * Memories? 
-[0] * I can. 
+[0] * ¿Y la gente? 
+[0] * ¿El prisionero? 
+[0] * ¿A investigar qué? 
+[0] * Me llaman y yo acudo, programa. 
+[0] * ¿Una explosión? 
+[0] * ¿Qué altura tiene este edificio? 
+[0] * ¿Algún problema? 
+[0] * ¿Recuerdos? 
+[0] * Puedo. 
 
 Processing a1_s2_b_lobbyFirstHangoutPostGame
 Total permutations: 135
@@ -36,11 +36,11 @@ Globals:
 _kernelSawYouDodge = 0
 _askedKernelToHelp = 0
 Example:
-[0] * Thank you. 
-[0] * That's not your call to make. 
-[0] * You'd defy Prinz? 
-[1] * I work alone. 
-[0] * I'm sorry. 
+[0] * Gracias. 
+[0] * Eso no lo decides tú. 
+[0] * ¿Te atreverías a desafiar a Prinz? 
+[1] * Trabajo por mi cuenta. 
+[0] * Lo siento. 
 
 Processing a1_s3_adminOfficeFirstMeeting
 Total permutations: 10368
@@ -52,14 +52,14 @@ _toldAdminAlignment = 0
 _respectCounter = 5
 _respectShownToAdmin = 1
 Example:
-[0] * Reputation is everything. 
-[0] * You didn't hire me to talk about desks. 
-[0] * I fight for the Users. 
-[0] * We owe Him everything. 
-[0] * You can't save everyone. 
-[1] * Can we get to the case, please? 
-[0] * What was in the Vault? 
-[0] * I'll start with the Vault. 
+[0] * La reputación lo es todo. 
+[0] * No me has llamado para hablar de mesas. 
+[0] * Lucho por los usuarios. 
+[0] * Se lo debemos todo. 
+[0] * No se puede salvar a todo el mundo. 
+[1] * ¿Nos podemos centrar en el caso, por favor? 
+[0] * ¿Qué había en la cámara acorazada? 
+[0] * Comenzaré por la cámara acorazada. 
 
 Processing a1_s4_firstVisitToLibrary
 Total permutations: 7290
@@ -74,16 +74,16 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _SierraOpinionTracker = 2
 Example:
-[0] * I've never seen anything like this before. 
-[0] * I don't understand. 
-[0] * Is that a trick question? 
-[3] * Let's move on. 
-[0] * To knock on the sky, listen to the sound? 
-[0] * I read. 
-[0] * Greetings. 
-[0] * Yes. I'm sorry for staring. 
-[0] * You look... User-ish? 
-[0] * I don't think you did anything. 
+[0] * Nunca he visto nada semejante. 
+[0] * No lo entiendo. 
+[0] * ¿Es una pregunta trampa? 
+[3] * Prosigamos. 
+[0] * Si el anciano va a tocar el cielo, ¿escucha el sonido? 
+[0] * Algo he leído. 
+[0] * Saludos. 
+[0] * Sí. Disculpa mi curiosidad malsana. 
+[0] * Tú tienes pinta de usuario... Más o menos. 
+[0] * Creo que no has hecho nada. 
 
 Processing a1_s5_a_firstCassEncounter
 Total permutations: 27
@@ -98,9 +98,9 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _IntroducedSelf = 0
 Example:
-[0] * Hey, what's your name? 
-[0] * You're confused? 
-[0] * Not at all. 
+[0] * Hola, ¿cómo te llamas? 
+[0] * ¿Te has desorientado? 
+[0] * Para nada. 
 
 Processing a1_s5_b_firstCassEncounterPostGame
 Total permutations: 128
@@ -114,11 +114,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * What do you remember? 
-[0] * A program? Anyone else here before the explosion? 
-[0] * I'm a detective, I solve mysteries. 
-[0] * Well, of the explosion. 
-[0] * I'll be back soon. 
+[0] * ¿Qué recuerdas? 
+[0] * ¿Un programa? ¿Vino alguien antes de la explosión? 
+[0] * Soy detective. Resuelvo misterios. 
+[0] * El de la explosión, más bien. 
+[0] * Enseguida vuelvo. 
 
 Processing a1_s6_a_returnToAdmin
 Total permutations: 162
@@ -132,11 +132,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * It's good to be back. 
-[0] * That seems to be the case. 
-[0] * Isn't this place built to keep them ignorant? 
-[0] * I spoke to the Librarian. 
-[0] * I can. 
+[0] * Un placer estar aquí de nuevo. 
+[0] * Parece ser que sí. 
+[0] * ¿Acaso este lugar no se construyó para velar por esa ignorancia? 
+[0] * He hablado con la bibliotecaria. 
+[0] * Puedo. 
 
 Processing a1_s6_b_returnToAdminPostGame
 Total permutations: 180
@@ -150,12 +150,12 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _accusedToAdmin = 0
 Example:
-[0] * It's too early to say. 
-[0] * As long as it takes. 
-[3] * No more questions. 
-[0] * Yes. 
-[0] * The name rings a bell. 
-[0] * Alright. 
+[0] * Aún es pronto para sacar nada en claro. 
+[0] * Cuanto sea necesario. 
+[3] * No tengo más preguntas. 
+[0] * Sí. 
+[0] * Me suena su nombre. 
+[0] * Está bien. 
 
 Processing a2_s1_landingPadProxyArrives
 Total permutations: 3888
@@ -171,16 +171,16 @@ _SierraFirstImpression = 0
 _AgreedToHelpProxy = 0
 _ExplainedHerTarget = 0
 Example:
-[1] * I don't give my personal identifier to criminals while on a case. 
-[0] * I know you're a thief. 
-[0] * Shoot. 
-[0] * You know what happened. 
-[0] * He's been helping my investigation. 
-[0] * Why tell me? 
-[3] * Let's move on. 
-[0] * I can't do that. 
-[0] * You're not going in there. 
-[0] * Throw your Disc at Proxy. 
+[1] * No revelo mi identificador personal a delincuentes cuando investigo. 
+[0] * Sé que eres una ladrona. 
+[0] * Pregunta. 
+[0] * Ya sabes qué ha pasado. 
+[0] * Me ayuda con mi investigación. 
+[0] * ¿Por qué me lo cuentas? 
+[3] * Prosigamos. 
+[0] * No puedo hacer eso. 
+[0] * No vas a entrar. 
+[0] * Lanzar tu disco a Proxy. 
 
 Processing a2_s2_a_returnToCass
 Total permutations: 1458
@@ -199,13 +199,13 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * You OK? 
-[0] * Yeah. 
-[0] * It is. 
-[0] * There's a lot of power at play. 
-[0] * Meaning... 
-[0] * We need to find out what was stolen. 
-[0] * Are you scared? 
+[0] * ¿Te encuentras bien? 
+[0] * Sí. 
+[0] * Sí. 
+[0] * Hay mucho poder involucrado. 
+[0] * ¿Qué me quieres decir con eso? 
+[0] * Tenemos que averiguar qué han robado. 
+[0] * ¿Tienes miedo? 
 
 Processing a2_s2_b_returnToCassPostGame
 Total permutations: 405
@@ -224,11 +224,11 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * So? 
-[0] * It's OK. 
-[1] * You were alone? 
-[0] * The explosion was triggered remotely? 
-[0] * We are making progress. 
+[0] * ¿Has visto algo? 
+[0] * No pasa nada. 
+[1] * ¿Estabas a solas? 
+[0] * ¿La explosión se detonó de forma remota? 
+[0] * Vamos progresando. 
 
 Processing a2_s3_sierras question
 Total permutations: 62208
@@ -249,19 +249,19 @@ _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 _tourReveal = 0
 Example:
-[0] * What's wrong? 
-[0] * Some kind of super powered modification. 
-[0] * I have nothing but respect for you. 
-[0] * OK. 
-[0] * You're working with someone on the outside? 
-[0] * You think they stole some data from the Vault? 
-[0] * You're not responsible for the explosion. 
-[0] * Greetings program. 
-[5] * No more questions. 
-[0] * Why didn't Ada already tell me that you had an alibi? 
-[0] * Why didn't you tell me Sierra was here during the explosion? 
-[0] * I heard you. 
-[1] * I will have more questions. You're staying, Sierra. 
+[0] * ¿Qué pasa? 
+[0] * Una especie de modificación de gran poder. 
+[0] * Cuentas con todo mi respeto. 
+[0] * De acuerdo. 
+[0] * ¿Estás confabulada con alguien de fuera? 
+[0] * ¿Crees que alguien ha robado datos de la cámara acorazada? 
+[0] * No eres responsable de la explosión. 
+[0] * Saludos, programa. 
+[5] * No tengo más preguntas. 
+[0] * ¿Por qué Ada no me ha contado que tenías una coartada? 
+[0] * ¿Por qué no me contaste que Sierra estaba aquí durante la explosión? 
+[0] * Ya te he oído. 
+[1] * Tendré más preguntas. Te quedas aquí, Sierra. 
 
 Processing a2_s4_a_lobbyGrishCheckIn
 Total permutations: 6
@@ -277,8 +277,8 @@ _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 Example:
-[0] * OK. 
-[0] * I can't keep doing this for you. 
+[0] * Bien. 
+[0] * No puedo estar siempre pendiente de tu disco. 
 
 Processing a2_s4_b_lobbyGrishCheckInPostGame
 Total permutations: 9
@@ -298,9 +298,9 @@ _haveVisitedSierraActTwo = 1
 _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * I've no idea. 
-[0] * Nothing. 
-[6] * No more questions. 
+[0] * Ni idea. 
+[0] * En absoluto. 
+[6] * No tengo más preguntas. 
 
 Processing a2_s5_adminReportBack
 Total permutations: 1
@@ -320,7 +320,7 @@ _adminLook3 = 0
 _adminLook4 = 0
 _queryOnSide = 0
 Example:
-[5] * Leave. 
+[5] * Marcharse. 
 
 Processing a2_s6_landingPadProxyOutcome
 Total permutations: 432
@@ -338,13 +338,13 @@ _FreedSierra = 0
 _AdminDied = 0
 _sierraAddressed = 0
 Example:
-[0] * That's right, right where you're standing. 
-[0] * I liked her. 
-[0] * They are. 
-[0] * Cass was alone when the explosion happened. 
-[0] * Go on. 
-[0] * I know. 
-[0] * Yes? 
+[0] * Correcto, justo donde te encuentras. 
+[0] * A mí me caía bien. 
+[0] * Sí. 
+[0] * Cass estaba a solas cuando se produjo la explosión. 
+[0] * Te escucho. 
+[0] * Lo sé. 
+[0] * ¿Sí? 
 
 Processing a2_s7_a_cassIsNotAGuard
 Total permutations: 27
@@ -361,9 +361,9 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * A lot's happening. 
-[0] * Remember anything else? 
-[0] * You don't need to do that if you don't want to. 
+[0] * Están pasando muchas cosas. 
+[0] * ¿Has recordado algo más? 
+[0] * No tienes que hacerlo si no quieres. 
 
 Processing a2_s7_b_cassIsNotAGuardPostGame
 Total permutations: 864
@@ -380,13 +380,13 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * It's OK. 
-[0] * The thief? 
-[0] * So how did you get here? 
-[0] * You said it was cold. 
-[0] * Why were you transferred? 
-[0] * Explosive? How do you survive that? 
-[4] * No more questions, rest. 
+[0] * Todo irá bien. 
+[0] * ¿El ladrón? 
+[0] * ¿Y cómo llegaste aquí? 
+[0] * Dices que hacía frío. 
+[0] * ¿Por qué te trasladaron? 
+[0] * ¿Explosivo? ¿Y cómo sobreviviste? 
+[4] * Hasta aquí las preguntas. Descansa. 
 
 Processing a2_s8_LibraryClosure
 Total permutations: 324
@@ -403,12 +403,12 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * I'll remember it for a long time. 
-[0] * How are you? 
-[0] * Cass is also a prisoner. 
-[0] * Well, the explosions... 
-[0] * I do not interfere. 
-[0] * I don't think there's anything left to say. 
+[0] * Tardaré mucho en olvidarla. 
+[0] * ¿Cómo estás? 
+[0] * Cass también es une prisionere. 
+[0] * Están las explosiones... 
+[0] * Tengo prohibido interferir. 
+[0] * Creo que no queda nada más que decir. 
 
 Processing a2_s9_a_AnotherVaultExplosion
 Total permutations: 4
@@ -425,8 +425,8 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * How are you feeling, Cass? 
-[0] * Still no memory of why? 
+[0] * ¿Cómo te encuentras, Cass? 
+[0] * ¿Sigues sin recordar por qué? 
 
 Processing a2_s9_b_AnotherVaultExplosionPostGame
 Total permutations: 54
@@ -443,11 +443,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * What was that? 
-[0] * It didn't happen. 
-[0] * How do you know this is real? 
-[0] * The Grid is ending. 
-[6] * I have nothing more to ask. 
+[0] * ¿Qué era eso? 
+[0] * No ha ocurrido. 
+[0] * ¿Cómo sabes que eso es cierto? 
+[0] * La Red se acabará. 
+[6] * No tengo nada más que preguntar. 
 
 Processing a3_s1_alt1_admin
 Total permutations: 40824
@@ -464,17 +464,17 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Do you know what Cass knows? 
-[0] * How is that Blasphemy? 
-[0] * It's been well over a thousand cycles, Prinz. 
-[0] * This world was never meant to last forever. 
-[0] * We have to tell everyone. 
-[0] * That case isn't closed. 
-[0] * My choices were logical. 
-[0] * I need your help. 
-[0] * I'm going to free Cass. 
-[0] * We can learn how to control it. 
-[0] * You'll let me take Cass from this place? 
+[0] * ¿Sabes lo que sabe Cass? 
+[0] * ¿Blasfemia por qué? 
+[0] * Ya han pasado más de mil ciclos, Prinz. 
+[0] * Este mundo no está creado para durar eternamente. 
+[0] * Tenemos que contárselo al mundo. 
+[0] * Ese caso no está cerrado. 
+[0] * Mis elecciones han sido lógicas. 
+[0] * Necesito tu ayuda. 
+[0] * Voy a liberar a Cass. 
+[0] * Podemos aprender a controlarlo. 
+[0] * ¿Permitirás que saque de aquí a Cass? 
 
 Processing a3_s1_alt2_grishInLobby
 Total permutations: 118098
@@ -490,18 +490,18 @@ _FreedSierra = 0
 _AdminDied = 0
 _kernelSawYouDodge = 0
 Example:
-[0] * Stand down. 
-[0] * Hhrmmmf. 
-[0] * HHRMMMF! 
-[0] * I said, I'm not your enemy. 
-[0] * That's right. 
-[0] * They must be saved. 
-[0] * Cass isn't a criminal. 
-[0] * Cass told me something terrifying. 
-[0] * Do it. 
-[0] * I have to help them, Grish. 
-[0] * Prinz wouldn't have let you. 
-[0] * Goodbye program. 
+[0] * No te acerques. 
+[0] * Hrrrmff. 
+[0] * ¡HRRRMFF! 
+[0] * He dicho que no soy tu enemigo. 
+[0] * Exacto. 
+[0] * Hay que salvar a Cass. 
+[0] * Cass no tiene nada de delincuente. 
+[0] * Cass me ha contado algo horroroso. 
+[0] * Hacerlo. 
+[0] * Tengo que ayudarle, Grish. 
+[0] * Prinz no te lo habría permitido. 
+[0] * Adiós, programa. 
 
 Processing a3_s2_a_culminationLandingPad
 Total permutations: 81
@@ -519,10 +519,10 @@ _FreedSierra = 0
 _AdminDied = 0
 _liedToCass = 0
 Example:
-[0] * Hello Cass. 
-[0] * My name's Query. 
-[0] * I'm here to help The Grid. 
-[0] * Are you sure you want to know? 
+[0] * Hola, Cass. 
+[0] * Me llamo Query. 
+[0] * He venido a ayudar a La Red. 
+[0] * ¿Seguro que quieres saber? 
 
 Processing a3_s2_b_culminationLandingPadPostGame
 Total permutations: 270
@@ -539,11 +539,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Console them. 
-[0] * What do you want to do? 
-[0] * Another centicycle is beginning. 
-[0] * You said. 
-[0] * I can keep you safe. 
+[0] * Consolarle. 
+[0] * ¿Qué quieres hacer? 
+[0] * Va a empezar otro centiciclo. 
+[0] * Eso dices. 
+[0] * Yo podría mantenerte a salvo. 
 
 Processing a3_s2_c_culminationLandingPadPostPostGame
 Total permutations: 810
@@ -562,12 +562,12 @@ _AdminDied = 0
 _CassEnding = 0
 _GrishDied = 0
 Example:
-[0] * Overwhelming. 
-[0] * You act like you're not going to make it. 
-[1] * Maybe, if we're out here long enough. 
-[2] * It might be safest to head back to the Vault. 
-[0] * I just said it would be safer. 
-[0] * It is. 
+[0] * Abrumador. 
+[0] * Hablas como si no fueras a vivir. 
+[1] * Si nos quedamos aquí demasiado tiempo, tal vez. 
+[2] * Me parece que lo más seguro sería llevarte a la cámara acorazada. 
+[0] * Tan solo digo que sería lo más seguro. 
+[0] * Lo es. 
 
 Processing a3_s3_anExit
 Total permutations: 1
@@ -588,7 +588,7 @@ _GrishDied = 0
 _characterOptionsRead = 0
 _learningOptionsRead = 0
 Example:
-[3] * You're ready to leave. 
+[3] * Estás listo para marcharte. 
 
 Keypresses: 1384
-Calculation took 4.55 minutes
+Calculation took 4.21 minutes

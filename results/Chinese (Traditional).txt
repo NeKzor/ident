@@ -5,11 +5,11 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Yes 
-[0] * Hold your ground. 
-[0] * Nothing I can't handle. 
-[0] * Greetings, program. 
-[0] * This'll be easier if you work with me. 
+[0] * 是 
+[0] * 站在原地。 
+[0] * 還行，我處理得來。 
+[0] * 程式，你好啊。 
+[0] * 只要你跟我合作，事情就會容易一點。 
 
 Processing a1_s2_a_lobbyFirstHangout
 Total permutations: 4536
@@ -18,15 +18,15 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Where is everyone? 
-[0] * Prisoner? 
-[0] * Investigating what? 
-[0] * I get the call, I run, program. 
-[0] * An explosion? 
-[0] * How tall is this building? 
-[0] * Is there a problem? 
-[0] * Memories? 
-[0] * I can. 
+[0] * 大家都去哪了？ 
+[0] * 囚犯？ 
+[0] * 調查什麼？ 
+[0] * 程式，我接到電話，然後我就出發了。 
+[0] * 爆炸？ 
+[0] * 這棟建築物多高？ 
+[0] * 有什麼問題嗎？ 
+[0] * 記憶？ 
+[0] * 可以。 
 
 Processing a1_s2_b_lobbyFirstHangoutPostGame
 Total permutations: 135
@@ -36,11 +36,11 @@ Globals:
 _kernelSawYouDodge = 0
 _askedKernelToHelp = 0
 Example:
-[0] * Thank you. 
-[0] * That's not your call to make. 
-[0] * You'd defy Prinz? 
-[1] * I work alone. 
-[0] * I'm sorry. 
+[0] * 謝謝。 
+[0] * 這不是你能決定的。 
+[0] * 你想違抗普林茲？ 
+[1] * 我獨來獨往。 
+[0] * 我很抱歉。 
 
 Processing a1_s3_adminOfficeFirstMeeting
 Total permutations: 10368
@@ -52,14 +52,14 @@ _toldAdminAlignment = 0
 _respectCounter = 5
 _respectShownToAdmin = 1
 Example:
-[0] * Reputation is everything. 
-[0] * You didn't hire me to talk about desks. 
-[0] * I fight for the Users. 
-[0] * We owe Him everything. 
-[0] * You can't save everyone. 
-[1] * Can we get to the case, please? 
-[0] * What was in the Vault? 
-[0] * I'll start with the Vault. 
+[0] * 名聲就是一切。 
+[0] * 你不是僱用我來聊書桌的。 
+[0] * 我為使用者而戰。 
+[0] * 我們虧欠他一切。 
+[0] * 你無法拯救所有人。 
+[1] * 我們可以談談案子嗎？ 
+[0] * 金庫內有什麼？ 
+[0] * 我會從金庫著手。 
 
 Processing a1_s4_firstVisitToLibrary
 Total permutations: 7290
@@ -74,16 +74,16 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _SierraOpinionTracker = 2
 Example:
-[0] * I've never seen anything like this before. 
-[0] * I don't understand. 
-[0] * Is that a trick question? 
-[3] * Let's move on. 
-[0] * To knock on the sky, listen to the sound? 
-[0] * I read. 
-[0] * Greetings. 
-[0] * Yes. I'm sorry for staring. 
-[0] * You look... User-ish? 
-[0] * I don't think you did anything. 
+[0] * 我從沒看過這種景象。 
+[0] * 我無法理解。 
+[0] * 這是陷阱題嗎？ 
+[3] * 繼續前進吧。 
+[0] * 敲響天空，聆聽其聲？ 
+[0] * 我明白。 
+[0] * 你好。 
+[0] * 是的。很抱歉我一直盯著看。 
+[0] * 你看起來... 很像使用者？ 
+[0] * 我認為你什麼都沒做。 
 
 Processing a1_s5_a_firstCassEncounter
 Total permutations: 27
@@ -98,9 +98,9 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _IntroducedSelf = 0
 Example:
-[0] * Hey, what's your name? 
-[0] * You're confused? 
-[0] * Not at all. 
+[0] * 嘿，你叫什麼名字？ 
+[0] * 你很困惑嗎？ 
+[0] * 並沒有。 
 
 Processing a1_s5_b_firstCassEncounterPostGame
 Total permutations: 128
@@ -114,11 +114,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * What do you remember? 
-[0] * A program? Anyone else here before the explosion? 
-[0] * I'm a detective, I solve mysteries. 
-[0] * Well, of the explosion. 
-[0] * I'll be back soon. 
+[0] * 你記得什麼？ 
+[0] * 程式？爆炸發生前有程式在這嗎？ 
+[0] * 我是個偵探，我會解開謎團。 
+[0] * 這個嘛... 是爆炸的謎團。 
+[0] * 我很快就會回來。 
 
 Processing a1_s6_a_returnToAdmin
 Total permutations: 162
@@ -132,11 +132,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * It's good to be back. 
-[0] * That seems to be the case. 
-[0] * Isn't this place built to keep them ignorant? 
-[0] * I spoke to the Librarian. 
-[0] * I can. 
+[0] * 很高興能回來。 
+[0] * 看起來是這樣。 
+[0] * 這地方不就是為了讓他們一無所知才建造的嗎？ 
+[0] * 我和圖書館員談過了。 
+[0] * 可以。 
 
 Processing a1_s6_b_returnToAdminPostGame
 Total permutations: 180
@@ -150,12 +150,12 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _accusedToAdmin = 0
 Example:
-[0] * It's too early to say. 
-[0] * As long as it takes. 
-[3] * No more questions. 
-[0] * Yes. 
-[0] * The name rings a bell. 
-[0] * Alright. 
+[0] * 現在言之過早。 
+[0] * 多久都有可能。 
+[3] * 沒有其他問題了。 
+[0] * 是的。 
+[0] * 我聽過這個名字。 
+[0] * 了解。 
 
 Processing a2_s1_landingPadProxyArrives
 Total permutations: 3888
@@ -171,16 +171,16 @@ _SierraFirstImpression = 0
 _AgreedToHelpProxy = 0
 _ExplainedHerTarget = 0
 Example:
-[1] * I don't give my personal identifier to criminals while on a case. 
-[0] * I know you're a thief. 
-[0] * Shoot. 
-[0] * You know what happened. 
-[0] * He's been helping my investigation. 
-[0] * Why tell me? 
-[3] * Let's move on. 
-[0] * I can't do that. 
-[0] * You're not going in there. 
-[0] * Throw your Disc at Proxy. 
+[1] * 我在執行任務時不會將個人資訊透漏給罪犯。 
+[0] * 我知道妳是個竊賊。 
+[0] * 快說。 
+[0] * 妳明明就知道發生了什麼事。 
+[0] * 他一直在幫助我調查。 
+[0] * 為什麼要告訴我？ 
+[3] * 我們繼續吧。 
+[0] * 我不能這麼做。 
+[0] * 妳不能進去裡面。 
+[0] * 向普洛克希投擲你的光碟。 
 
 Processing a2_s2_a_returnToCass
 Total permutations: 1458
@@ -199,13 +199,13 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * You OK? 
-[0] * Yeah. 
-[0] * It is. 
-[0] * There's a lot of power at play. 
-[0] * Meaning... 
-[0] * We need to find out what was stolen. 
-[0] * Are you scared? 
+[0] * 你沒事吧？ 
+[0] * 是啊。 
+[0] * 是啊。 
+[0] * 有很多程式介入。 
+[0] * 這代表... 
+[0] * 我們必須找出被偷走的是什麼。 
+[0] * 你很害怕嗎？ 
 
 Processing a2_s2_b_returnToCassPostGame
 Total permutations: 405
@@ -224,11 +224,11 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * So? 
-[0] * It's OK. 
-[1] * You were alone? 
-[0] * The explosion was triggered remotely? 
-[0] * We are making progress. 
+[0] * 所以？ 
+[0] * 沒事的。 
+[1] * 你自己一個人？ 
+[0] * 這場爆炸是遠端遙控的嗎？ 
+[0] * 我們有所進展了。 
 
 Processing a2_s3_sierras question
 Total permutations: 62208
@@ -249,19 +249,19 @@ _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 _tourReveal = 0
 Example:
-[0] * What's wrong? 
-[0] * Some kind of super powered modification. 
-[0] * I have nothing but respect for you. 
-[0] * OK. 
-[0] * You're working with someone on the outside? 
-[0] * You think they stole some data from the Vault? 
-[0] * You're not responsible for the explosion. 
-[0] * Greetings program. 
-[5] * No more questions. 
-[0] * Why didn't Ada already tell me that you had an alibi? 
-[0] * Why didn't you tell me Sierra was here during the explosion? 
-[0] * I heard you. 
-[1] * I will have more questions. You're staying, Sierra. 
+[0] * 怎麼了？ 
+[0] * 某種超強大的模組。 
+[0] * 我對妳只有敬重。 
+[0] * 好。 
+[0] * 妳和外面的某個程式合作？ 
+[0] * 妳認為他們從金庫偷走了一些資料嗎？ 
+[0] * 那場爆炸不是妳的錯。 
+[0] * 程式，你好。 
+[5] * 沒有其他問題。 
+[0] * 為什麼艾達不先跟我說你有不在場證明？ 
+[0] * 妳為什麼不告訴我爆炸時席拉就在現場？ 
+[0] * 我知道了。 
+[1] * 我會有更多問題要問的，席拉，你不准走。 
 
 Processing a2_s4_a_lobbyGrishCheckIn
 Total permutations: 6
@@ -277,8 +277,8 @@ _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 Example:
-[0] * OK. 
-[0] * I can't keep doing this for you. 
+[0] * 好的。 
+[0] * 我不能一直這樣幫你。 
 
 Processing a2_s4_b_lobbyGrishCheckInPostGame
 Total permutations: 9
@@ -298,9 +298,9 @@ _haveVisitedSierraActTwo = 1
 _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * I've no idea. 
-[0] * Nothing. 
-[6] * No more questions. 
+[0] * 我不知道。 
+[0] * 沒有。 
+[6] * 沒有其他問題。 
 
 Processing a2_s5_adminReportBack
 Total permutations: 1
@@ -320,7 +320,7 @@ _adminLook3 = 0
 _adminLook4 = 0
 _queryOnSide = 0
 Example:
-[5] * Leave. 
+[5] * 離開。 
 
 Processing a2_s6_landingPadProxyOutcome
 Total permutations: 432
@@ -338,13 +338,13 @@ _FreedSierra = 0
 _AdminDied = 0
 _sierraAddressed = 0
 Example:
-[0] * That's right, right where you're standing. 
-[0] * I liked her. 
-[0] * They are. 
-[0] * Cass was alone when the explosion happened. 
-[0] * Go on. 
-[0] * I know. 
-[0] * Yes? 
+[0] * 沒錯，你剛好就站在上面。 
+[0] * 我喜歡她。 
+[0] * 是的。 
+[0] * 爆炸發生時，卡西獨自一人。 
+[0] * 請說。 
+[0] * 我知道。 
+[0] * 什麼事？ 
 
 Processing a2_s7_a_cassIsNotAGuard
 Total permutations: 27
@@ -361,9 +361,9 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * A lot's happening. 
-[0] * Remember anything else? 
-[0] * You don't need to do that if you don't want to. 
+[0] * 發生了很多事。 
+[0] * 想起來其他事情了嗎？ 
+[0] * 如果你不想的話，不必這麼做。 
 
 Processing a2_s7_b_cassIsNotAGuardPostGame
 Total permutations: 864
@@ -380,13 +380,13 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * It's OK. 
-[0] * The thief? 
-[0] * So how did you get here? 
-[0] * You said it was cold. 
-[0] * Why were you transferred? 
-[0] * Explosive? How do you survive that? 
-[4] * No more questions, rest. 
+[0] * 沒事的。 
+[0] * 竊賊？ 
+[0] * 那麼你是怎麼到這裡來的？ 
+[0] * 你說過很冷。 
+[0] * 你為什麼會被送到這裡？ 
+[0] * 炸彈？你是怎麼活過爆炸的？ 
+[4] * 沒有其他問題，去休息吧。 
 
 Processing a2_s8_LibraryClosure
 Total permutations: 324
@@ -403,12 +403,12 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * I'll remember it for a long time. 
-[0] * How are you? 
-[0] * Cass is also a prisoner. 
-[0] * Well, the explosions... 
-[0] * I do not interfere. 
-[0] * I don't think there's anything left to say. 
+[0] * 我不會太快忘記這件事的。 
+[0] * 妳還好嗎？ 
+[0] * 卡西也是囚犯。 
+[0] * 因為爆炸... 
+[0] * 我不會干涉。 
+[0] * 我不覺得還有什麼好說的。 
 
 Processing a2_s9_a_AnotherVaultExplosion
 Total permutations: 4
@@ -425,8 +425,8 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * How are you feeling, Cass? 
-[0] * Still no memory of why? 
+[0] * 你還好嗎，卡西？ 
+[0] * 你還是不記得為什麼嗎？ 
 
 Processing a2_s9_b_AnotherVaultExplosionPostGame
 Total permutations: 54
@@ -443,11 +443,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * What was that? 
-[0] * It didn't happen. 
-[0] * How do you know this is real? 
-[0] * The Grid is ending. 
-[6] * I have nothing more to ask. 
+[0] * 那是什麼？ 
+[0] * 什麽都沒有發生啊。 
+[0] * 你怎麼知道這是真的呢？ 
+[0] * 創界網絡要結束了。 
+[6] * 我沒有其他問題要問了。 
 
 Processing a3_s1_alt1_admin
 Total permutations: 40824
@@ -464,17 +464,17 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Do you know what Cass knows? 
-[0] * How is that Blasphemy? 
-[0] * It's been well over a thousand cycles, Prinz. 
-[0] * This world was never meant to last forever. 
-[0] * We have to tell everyone. 
-[0] * That case isn't closed. 
-[0] * My choices were logical. 
-[0] * I need your help. 
-[0] * I'm going to free Cass. 
-[0] * We can learn how to control it. 
-[0] * You'll let me take Cass from this place? 
+[0] * 你曉得卡西知道什麼嗎？ 
+[0] * 這怎麼是胡扯呢？ 
+[0] * 這已經超過一千個周期了，普林茲。 
+[0] * 這個世界本來就不會永遠存在的。 
+[0] * 我們必須告訴大家。 
+[0] * 那還沒結案呢。 
+[0] * 我的決定十分合乎邏輯。 
+[0] * 我需要你的幫助。 
+[0] * 我要釋放卡西。 
+[0] * 我們可以學到如何控制它。 
+[0] * 你會讓我從這裡帶走卡西嗎？ 
 
 Processing a3_s1_alt2_grishInLobby
 Total permutations: 118098
@@ -490,18 +490,18 @@ _FreedSierra = 0
 _AdminDied = 0
 _kernelSawYouDodge = 0
 Example:
-[0] * Stand down. 
-[0] * Hhrmmmf. 
-[0] * HHRMMMF! 
-[0] * I said, I'm not your enemy. 
-[0] * That's right. 
-[0] * They must be saved. 
-[0] * Cass isn't a criminal. 
-[0] * Cass told me something terrifying. 
-[0] * Do it. 
-[0] * I have to help them, Grish. 
-[0] * Prinz wouldn't have let you. 
-[0] * Goodbye program. 
+[0] * 冷靜。 
+[0] * 好痛。 
+[0] * 好痛！ 
+[0] * 我是說，我不是你的敵人。 
+[0] * 沒錯。 
+[0] * 我一定要拯救他。 
+[0] * 卡西不是罪犯。 
+[0] * 卡西告訴我一件恐怖的事情。 
+[0] * 就這麼做吧。 
+[0] * 我必須要幫助他，葛瑞許。 
+[0] * 普林茲不會讓你這麼做的。 
+[0] * 再見了，程式。 
 
 Processing a3_s2_a_culminationLandingPad
 Total permutations: 81
@@ -519,10 +519,10 @@ _FreedSierra = 0
 _AdminDied = 0
 _liedToCass = 0
 Example:
-[0] * Hello Cass. 
-[0] * My name's Query. 
-[0] * I'm here to help The Grid. 
-[0] * Are you sure you want to know? 
+[0] * 你好，卡西。 
+[0] * 我是窺睿。 
+[0] * 我是來這裡協助創界網絡的。 
+[0] * 你確定你想知道吧？ 
 
 Processing a3_s2_b_culminationLandingPadPostGame
 Total permutations: 270
@@ -539,11 +539,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Console them. 
-[0] * What do you want to do? 
-[0] * Another centicycle is beginning. 
-[0] * You said. 
-[0] * I can keep you safe. 
+[0] * 安慰他。 
+[0] * 你想要怎麼做呢？ 
+[0] * 下個百分周期要開始了。 
+[0] * 你說過了。 
+[0] * 我可以保護你的安全。 
 
 Processing a3_s2_c_culminationLandingPadPostPostGame
 Total permutations: 810
@@ -562,12 +562,12 @@ _AdminDied = 0
 _CassEnding = 0
 _GrishDied = 0
 Example:
-[0] * Overwhelming. 
-[0] * You act like you're not going to make it. 
-[1] * Maybe, if we're out here long enough. 
-[2] * It might be safest to head back to the Vault. 
-[0] * I just said it would be safer. 
-[0] * It is. 
+[0] * 無法承受。 
+[0] * 你表現得好像你撐不過去一樣。 
+[1] * 如果我們在這裡待太久的話，或許會有。 
+[2] * 回到金庫可能是最安全的。 
+[0] * 我只是說那樣會安全點。 
+[0] * 這就是我要的。 
 
 Processing a3_s3_anExit
 Total permutations: 1
@@ -588,7 +588,7 @@ _GrishDied = 0
 _characterOptionsRead = 0
 _learningOptionsRead = 0
 Example:
-[3] * You're ready to leave. 
+[3] * 你準備好離開了。 
 
 Keypresses: 1384
-Calculation took 4.55 minutes
+Calculation took 3.58 minutes

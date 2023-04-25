@@ -5,11 +5,11 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Yes 
-[0] * Hold your ground. 
-[0] * Nothing I can't handle. 
-[0] * Greetings, program. 
-[0] * This'll be easier if you work with me. 
+[0] * はい 
+[0] * 一歩も引かない。 
+[0] * なんてことはない。 
+[0] * やあ、プログラム。 
+[0] * 仕事のために協力してくれ。 
 
 Processing a1_s2_a_lobbyFirstHangout
 Total permutations: 4536
@@ -18,15 +18,15 @@ Best permutations:  2
 Globals:
 _kernelSawYouDodge = 0
 Example:
-[0] * Where is everyone? 
-[0] * Prisoner? 
-[0] * Investigating what? 
-[0] * I get the call, I run, program. 
-[0] * An explosion? 
-[0] * How tall is this building? 
-[0] * Is there a problem? 
-[0] * Memories? 
-[0] * I can. 
+[0] * 他のみんなは？ 
+[0] * 囚人？ 
+[0] * 調査？ 
+[0] * 私は連絡を受けて現場へ向かうだけだ。 
+[0] * 爆発？ 
+[0] * ここは何階建てだ？ 
+[0] * 何か問題でも？ 
+[0] * 記憶か？ 
+[0] * 可能だ。 
 
 Processing a1_s2_b_lobbyFirstHangoutPostGame
 Total permutations: 135
@@ -36,11 +36,11 @@ Globals:
 _kernelSawYouDodge = 0
 _askedKernelToHelp = 0
 Example:
-[0] * Thank you. 
-[0] * That's not your call to make. 
-[0] * You'd defy Prinz? 
-[1] * I work alone. 
-[0] * I'm sorry. 
+[0] * 気が利くな。 
+[0] * あんたが決めることじゃない。 
+[0] * プリンツに逆らうのか？ 
+[1] * ひとりで調査させてもらう。 
+[0] * それはすまなかった。 
 
 Processing a1_s3_adminOfficeFirstMeeting
 Total permutations: 10368
@@ -52,14 +52,14 @@ _toldAdminAlignment = 0
 _respectCounter = 5
 _respectShownToAdmin = 1
 Example:
-[0] * Reputation is everything. 
-[0] * You didn't hire me to talk about desks. 
-[0] * I fight for the Users. 
-[0] * We owe Him everything. 
-[0] * You can't save everyone. 
-[1] * Can we get to the case, please? 
-[0] * What was in the Vault? 
-[0] * I'll start with the Vault. 
+[0] * 信用がすべてだ。 
+[0] * 机の話をするために雇ったわけじゃないだろう。 
+[0] * ユーザーのためだ。 
+[0] * すべて彼のおかげだ。 
+[0] * すべての者を救うことなどできない。 
+[1] * そろそろ事件の話をしてくれないか？ 
+[0] * 金庫室には何が？ 
+[0] * 金庫室から調査する。 
 
 Processing a1_s4_firstVisitToLibrary
 Total permutations: 7290
@@ -74,16 +74,16 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _SierraOpinionTracker = 2
 Example:
-[0] * I've never seen anything like this before. 
-[0] * I don't understand. 
-[0] * Is that a trick question? 
-[3] * Let's move on. 
-[0] * To knock on the sky, listen to the sound? 
-[0] * I read. 
-[0] * Greetings. 
-[0] * Yes. I'm sorry for staring. 
-[0] * You look... User-ish? 
-[0] * I don't think you did anything. 
+[0] * こんな場所は初めてだよ。 
+[0] * どういうことだ。 
+[0] * 引っかけ問題か？ 
+[3] * よし、行こう。 
+[0] * 空に触れ、音を聞く、か？ 
+[0] * 読書が趣味でね。 
+[0] * これはどうも。 
+[0] * ああ、ジロジロ見てしまって申し訳ないな。 
+[0] * その容姿… まるでユーザーのようだが？ 
+[0] * 私はあなたが潔白だと思っている。 
 
 Processing a1_s5_a_firstCassEncounter
 Total permutations: 27
@@ -98,9 +98,9 @@ _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 _IntroducedSelf = 0
 Example:
-[0] * Hey, what's your name? 
-[0] * You're confused? 
-[0] * Not at all. 
+[0] * やあ、名前は？ 
+[0] * 混乱しているようだけど？ 
+[0] * いやまったく。 
 
 Processing a1_s5_b_firstCassEncounterPostGame
 Total permutations: 128
@@ -114,11 +114,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * What do you remember? 
-[0] * A program? Anyone else here before the explosion? 
-[0] * I'm a detective, I solve mysteries. 
-[0] * Well, of the explosion. 
-[0] * I'll be back soon. 
+[0] * 覚えていることは？ 
+[0] * プログラムとか？ 爆発の前に誰か来なかったか？ 
+[0] * 私は謎を解明する探偵だ。 
+[0] * いや、爆発のだ。 
+[0] * すぐ戻るよ。 
 
 Processing a1_s6_a_returnToAdmin
 Total permutations: 162
@@ -132,11 +132,11 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _SierraFirstImpression = 1
 Example:
-[0] * It's good to be back. 
-[0] * That seems to be the case. 
-[0] * Isn't this place built to keep them ignorant? 
-[0] * I spoke to the Librarian. 
-[0] * I can. 
+[0] * どうも。 
+[0] * そのようだ。 
+[0] * このビルがそうさせているのでは？ 
+[0] * 司書のエイダに話を聞いた。 
+[0] * もちろん。 
 
 Processing a1_s6_b_returnToAdminPostGame
 Total permutations: 180
@@ -150,12 +150,12 @@ _haveVisitedCassActOne = 1
 _haveVisitedSierraActOne = 1
 _accusedToAdmin = 0
 Example:
-[0] * It's too early to say. 
-[0] * As long as it takes. 
-[3] * No more questions. 
-[0] * Yes. 
-[0] * The name rings a bell. 
-[0] * Alright. 
+[0] * まだ時期尚早だ。 
+[0] * 必要なだけだ。 
+[3] * 質問は以上だ。 
+[0] * どうした。 
+[0] * 名前は聞いたことがある。 
+[0] * わかった。 
 
 Processing a2_s1_landingPadProxyArrives
 Total permutations: 3888
@@ -171,16 +171,16 @@ _SierraFirstImpression = 0
 _AgreedToHelpProxy = 0
 _ExplainedHerTarget = 0
 Example:
-[1] * I don't give my personal identifier to criminals while on a case. 
-[0] * I know you're a thief. 
-[0] * Shoot. 
-[0] * You know what happened. 
-[0] * He's been helping my investigation. 
-[0] * Why tell me? 
-[3] * Let's move on. 
-[0] * I can't do that. 
-[0] * You're not going in there. 
-[0] * Throw your Disc at Proxy. 
+[1] * 調査中は犯罪者に名を名乗らないことにしている。 
+[0] * 怪盗だろ。 
+[0] * どうぞ。 
+[0] * 知ってるんだろ。 
+[0] * 私の調査を手伝っている。 
+[0] * なぜそれを私に話す？ 
+[3] * 質問は以上だ。 
+[0] * それはできない。 
+[0] * 君を通すわけにはいかない。 
+[0] * プロキシにディスクを投げる。 
 
 Processing a2_s2_a_returnToCass
 Total permutations: 1458
@@ -199,13 +199,13 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * You OK? 
-[0] * Yeah. 
-[0] * It is. 
-[0] * There's a lot of power at play. 
-[0] * Meaning... 
-[0] * We need to find out what was stolen. 
-[0] * Are you scared? 
+[0] * 大丈夫か？ 
+[0] * ああ。 
+[0] * そうだな。 
+[0] * 勢力争いが活発になってきたよ。 
+[0] * つまり？ 
+[0] * 何が盗まれたのかを知る必要がある。 
+[0] * 怖いのか？ 
 
 Processing a2_s2_b_returnToCassPostGame
 Total permutations: 405
@@ -224,11 +224,11 @@ _haveVisitedSierraActTwo = 0
 _haveVisitedGrishActTwo = 0
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * So? 
-[0] * It's OK. 
-[1] * You were alone? 
-[0] * The explosion was triggered remotely? 
-[0] * We are making progress. 
+[0] * どうだ？ 
+[0] * 大丈夫だ。 
+[1] * ひとりだったんだな？ 
+[0] * 爆発は遠隔操作ということか？ 
+[0] * 着実に真実に近づいてるよ。 
 
 Processing a2_s3_sierras question
 Total permutations: 62208
@@ -249,19 +249,19 @@ _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 _tourReveal = 0
 Example:
-[0] * What's wrong? 
-[0] * Some kind of super powered modification. 
-[0] * I have nothing but respect for you. 
-[0] * OK. 
-[0] * You're working with someone on the outside? 
-[0] * You think they stole some data from the Vault? 
-[0] * You're not responsible for the explosion. 
-[0] * Greetings program. 
-[5] * No more questions. 
-[0] * Why didn't Ada already tell me that you had an alibi? 
-[0] * Why didn't you tell me Sierra was here during the explosion? 
-[0] * I heard you. 
-[1] * I will have more questions. You're staying, Sierra. 
+[0] * 何かあったのか？ 
+[0] * 何らかの超常的な改造コードだと言っていた。 
+[0] * 私はエイダをただただ尊敬している。 
+[0] * よし。 
+[0] * 外部の誰かと共謀しているのか？ 
+[0] * 犯人が金庫室から盗んだのは何らかのデータということか？ 
+[0] * 爆発はエイダのせいじゃない。 
+[0] * どうも。 
+[5] * 質問は以上だ。 
+[0] * なぜエイダはアリバイがあることを私に言わなかったんだ？ 
+[0] * 爆発の時にシエラがここにいたことをなぜ言わなかった？ 
+[0] * 聞こえたよ。 
+[1] * 取り調べは終わっていない。あなたを行かせることはできない。 
 
 Processing a2_s4_a_lobbyGrishCheckIn
 Total permutations: 6
@@ -277,8 +277,8 @@ _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 _FreedSierra = 0
 Example:
-[0] * OK. 
-[0] * I can't keep doing this for you. 
+[0] * よし。 
+[0] * 何度もやり続けることはできない。 
 
 Processing a2_s4_b_lobbyGrishCheckInPostGame
 Total permutations: 9
@@ -298,9 +298,9 @@ _haveVisitedSierraActTwo = 1
 _haveVisitedGrishActTwo = 1
 _haveVisitedAdminActTwo = 0
 Example:
-[0] * I've no idea. 
-[0] * Nothing. 
-[6] * No more questions. 
+[0] * いや、まったく。 
+[0] * 何も言っていなかった。 
+[6] * 質問は以上だ。 
 
 Processing a2_s5_adminReportBack
 Total permutations: 1
@@ -320,7 +320,7 @@ _adminLook3 = 0
 _adminLook4 = 0
 _queryOnSide = 0
 Example:
-[5] * Leave. 
+[5] * オフィスを出る。 
 
 Processing a2_s6_landingPadProxyOutcome
 Total permutations: 432
@@ -338,13 +338,13 @@ _FreedSierra = 0
 _AdminDied = 0
 _sierraAddressed = 0
 Example:
-[0] * That's right, right where you're standing. 
-[0] * I liked her. 
-[0] * They are. 
-[0] * Cass was alone when the explosion happened. 
-[0] * Go on. 
-[0] * I know. 
-[0] * Yes? 
+[0] * ああ、ちょうどあんたが立っている所だ。 
+[0] * 私は彼女を気に入っていた。 
+[0] * 一致している。 
+[0] * 爆発の時、キャスはひとりだった。 
+[0] * もちろん。 
+[0] * それはもう聞いた。 
+[0] * なんだ？ 
 
 Processing a2_s7_a_cassIsNotAGuard
 Total permutations: 27
@@ -361,9 +361,9 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * A lot's happening. 
-[0] * Remember anything else? 
-[0] * You don't need to do that if you don't want to. 
+[0] * いろいろあってな。 
+[0] * 何か他に思い出したことは？ 
+[0] * 嫌なら無理しなくていいんだ。 
 
 Processing a2_s7_b_cassIsNotAGuardPostGame
 Total permutations: 864
@@ -380,13 +380,13 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * It's OK. 
-[0] * The thief? 
-[0] * So how did you get here? 
-[0] * You said it was cold. 
-[0] * Why were you transferred? 
-[0] * Explosive? How do you survive that? 
-[4] * No more questions, rest. 
+[0] * 落ち着くんだ。 
+[0] * 強盗？ 
+[0] * ではどうやってここに？ 
+[0] * 冷たい場所だと言っていたな。 
+[0] * なぜ運ぶ必要があったんだ？ 
+[0] * 体が爆弾？ ならどうやって生き延びた？ 
+[4] * 質問は以上だ。休んでくれ。 
 
 Processing a2_s8_LibraryClosure
 Total permutations: 324
@@ -403,12 +403,12 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * I'll remember it for a long time. 
-[0] * How are you? 
-[0] * Cass is also a prisoner. 
-[0] * Well, the explosions... 
-[0] * I do not interfere. 
-[0] * I don't think there's anything left to say. 
+[0] * しばらく忘れられそうにないよ。 
+[0] * エイダの調子は？ 
+[0] * キャスは囚人でもある。 
+[0] * 存在は別としても爆発がある… 
+[0] * 私は介入しない。 
+[0] * もう何も言うことはない。 
 
 Processing a2_s9_a_AnotherVaultExplosion
 Total permutations: 4
@@ -425,8 +425,8 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * How are you feeling, Cass? 
-[0] * Still no memory of why? 
+[0] * キャス、気分はどうだ？ 
+[0] * 理由はまだ思い出せないのか？ 
 
 Processing a2_s9_b_AnotherVaultExplosionPostGame
 Total permutations: 54
@@ -443,11 +443,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * What was that? 
-[0] * It didn't happen. 
-[0] * How do you know this is real? 
-[0] * The Grid is ending. 
-[6] * I have nothing more to ask. 
+[0] * 今のはいったい？ 
+[0] * ここであんなことは起きていない。 
+[0] * どうして現実になるとわかるんだ？ 
+[0] * それはグリッドの崩壊。 
+[6] * これで質問は以上だ。 
 
 Processing a3_s1_alt1_admin
 Total permutations: 40824
@@ -464,17 +464,17 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Do you know what Cass knows? 
-[0] * How is that Blasphemy? 
-[0] * It's been well over a thousand cycles, Prinz. 
-[0] * This world was never meant to last forever. 
-[0] * We have to tell everyone. 
-[0] * That case isn't closed. 
-[0] * My choices were logical. 
-[0] * I need your help. 
-[0] * I'm going to free Cass. 
-[0] * We can learn how to control it. 
-[0] * You'll let me take Cass from this place? 
+[0] * キャスが知っていることを知っているか？ 
+[0] * 冒涜？ 
+[0] * もう1,000サイクル以上経っているんだぞ、プリンツ。 
+[0] * この世界に永遠は約束されていなかったんだ。 
+[0] * グリッド全体に伝えなければ。 
+[0] * その件はまだ決着がついていない。 
+[0] * 論理的に考えた結果だ。 
+[0] * 力を貸してほしい。 
+[0] * キャスを解放する。 
+[0] * コントロールする方法を学べばいい話だ。 
+[0] * ここからキャスを連れ出していいということか？ 
 
 Processing a3_s1_alt2_grishInLobby
 Total permutations: 118098
@@ -490,18 +490,18 @@ _FreedSierra = 0
 _AdminDied = 0
 _kernelSawYouDodge = 0
 Example:
-[0] * Stand down. 
-[0] * Hhrmmmf. 
-[0] * HHRMMMF! 
-[0] * I said, I'm not your enemy. 
-[0] * That's right. 
-[0] * They must be saved. 
-[0] * Cass isn't a criminal. 
-[0] * Cass told me something terrifying. 
-[0] * Do it. 
-[0] * I have to help them, Grish. 
-[0] * Prinz wouldn't have let you. 
-[0] * Goodbye program. 
+[0] * 下がれ。 
+[0] * うぐぐ。 
+[0] * ぐ、ぐじいっ！ 
+[0] * 私はあんたの敵ではないと言ったはずだ。 
+[0] * そのとおりだ。 
+[0] * キャスは救わなければならない。 
+[0] * キャスは犯罪者じゃない。 
+[0] * キャスから恐ろしい話を聞いた。 
+[0] * 走る。 
+[0] * 私はキャスを助けなければならない。 
+[0] * プリンツがそうはさせなかっただろう。 
+[0] * さよなら。 
 
 Processing a3_s2_a_culminationLandingPad
 Total permutations: 81
@@ -519,10 +519,10 @@ _FreedSierra = 0
 _AdminDied = 0
 _liedToCass = 0
 Example:
-[0] * Hello Cass. 
-[0] * My name's Query. 
-[0] * I'm here to help The Grid. 
-[0] * Are you sure you want to know? 
+[0] * やあ、キャス。 
+[0] * 私の名前はクエリだ。 
+[0] * グリッドを助けに来た。 
+[0] * 本当にいいんだな？ 
 
 Processing a3_s2_b_culminationLandingPadPostGame
 Total permutations: 270
@@ -539,11 +539,11 @@ _AgreedToHelpProxy = 0
 _FreedSierra = 0
 _AdminDied = 0
 Example:
-[0] * Console them. 
-[0] * What do you want to do? 
-[0] * Another centicycle is beginning. 
-[0] * You said. 
-[0] * I can keep you safe. 
+[0] * 慰める。 
+[0] * キャスはどうしたい？ 
+[0] * そろそろ夜明けだ。 
+[0] * 前にもそう言っていた。 
+[0] * 私が守ってやる。 
 
 Processing a3_s2_c_culminationLandingPadPostPostGame
 Total permutations: 810
@@ -562,12 +562,12 @@ _AdminDied = 0
 _CassEnding = 0
 _GrishDied = 0
 Example:
-[0] * Overwhelming. 
-[0] * You act like you're not going to make it. 
-[1] * Maybe, if we're out here long enough. 
-[2] * It might be safest to head back to the Vault. 
-[0] * I just said it would be safer. 
-[0] * It is. 
+[0] * 圧倒されているよ。 
+[0] * それまで持たないようなふりをする。 
+[1] * ずっとここにいたら来るかもしれないな。 
+[2] * 金庫室に戻るのが一番安全かもしれない。 
+[0] * その方が安全なんだ。 
+[0] * そうだ。 
 
 Processing a3_s3_anExit
 Total permutations: 1
@@ -588,7 +588,7 @@ _GrishDied = 0
 _characterOptionsRead = 0
 _learningOptionsRead = 0
 Example:
-[3] * You're ready to leave. 
+[3] * 出発する準備ができた。 
 
 Keypresses: 1384
-Calculation took 4.55 minutes
+Calculation took 3.62 minutes
