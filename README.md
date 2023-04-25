@@ -9,24 +9,20 @@
 |Language|Best solution (in keypresses)|
 |---|:-:|
 |English|1384|
-|Chinese (Simplified)|???|
-|Chinese (Traditional)|???|
-|French|???|
-|German|???|
-|Italian (Italy)|???|
-|Japanese|???|
-|Korean|???|
-|Spanish (Castilian)|???|
+|Chinese (Simplified)|1384|
+|Chinese (Traditional)|1384|
+|French|1384|
+|German|1384|
+|Italian (Italy)|1384|
+|Japanese|1384|
+|Korean|1384|
+|Spanish (Castilian)|1384|
 
 ## Caveats
 
 * The algorithm cannot predict consequences of "worse" choices with a better outcome.
 * It currently takes minutes to get a result.
-
-## TODO
-
-* Count non-text based keypresses
-* Create a tool assisted speedrun
+* A single process wastes about 2 GB of ram lol.
 
 ## Run locally
 
@@ -36,3 +32,9 @@
 
 [AssetRipper]: https://github.com/AssetRipper/AssetRipper/releases
 [dotnet]: https://dotnet.microsoft.com/en-us/download/dotnet/scripts
+
+## TODO
+
+* Can we optimize for performance and for resources?
+* Count non-text based keypresses
+* Create a tool assisted speedrun
