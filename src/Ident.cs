@@ -13,11 +13,7 @@
  *      https://github.com/inkle/ink/releases/tag/v1.0.0
  */
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using Story = Ink.Runtime.Story;
 using Choice = Ink.Runtime.Choice;
