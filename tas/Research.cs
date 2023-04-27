@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2023, NeKz
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 //var gm = Ident.GameManager.Instance;
 var gi = Ident.GameInput.Instance;
 var defragGame = gi.Minigame;
