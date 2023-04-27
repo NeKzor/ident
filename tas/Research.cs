@@ -1,4 +1,3 @@
-
 //var gm = Ident.GameManager.Instance;
 var gi = Ident.GameInput.Instance;
 var defragGame = gi.Minigame;
@@ -6,6 +5,20 @@ var defragGame = gi.Minigame;
 // TODO: check for m_isPlaying
 
 var state = new UnityEngine.InputSystem.LowLevel.KeyboardState();
+
+// TODO: What happens if we solve the puzzle during animation? Maybe with RNG manipulation?
+if (!defragGame.menuObjectLink.paused && defragGame.m_playable && defragGame.isFullyVisible)
+{
+    // NOTE: Pause will be buffered until the animator finished running
+    state.Press(UnityEngine.InputSystem.Key.Escape); // Pause
+}
+
+if (defragGame.menuObjectLink.paused)
+{
+    state.Press(UnityEngine.InputSystem.Key.DownArrow); // Down
+    state.Press(UnityEngine.InputSystem.Key.DownArrow); // Down
+    state.Press(UnityEngine.InputSystem.Key.Enter); // Skip
+}
 
 switch (gi.state)
 {
