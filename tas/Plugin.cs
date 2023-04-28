@@ -1,4 +1,10 @@
-﻿using System.Reflection;
+﻿/*
+ * Copyright (c) 2023, NeKz
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+using System.Reflection;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -28,7 +34,11 @@ namespace Ident.TAS
         static bool once = false;
         private static void Prefix(miniGame __instance, bool ___m_playable)
         {
-            if (!__instance.menuObjectLink.paused && ___m_playable && __instance.menuObjectLink.isFullyVisible && !once)
+            if (!__instance.menuObjectLink.paused
+                && ___m_playable
+                && __instance.menuObjectLink.isFullyVisible
+                && !__instance.animator.IsRunning()
+                && !once)
             {
                 once = true;
                 var state = new KeyboardState();
