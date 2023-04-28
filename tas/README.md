@@ -10,6 +10,7 @@ Copy these game files from `identity_Data\Managed` into the `./lib/` folder:
 - `Assembly-CSharp.dll`
 - `Unity.InputSystem.dll`
 - `UnityEngine.CoreModule.dll`
+- `UnityEngine.UIModule.dll`
 
 Run `.\build.ps1`.
 
