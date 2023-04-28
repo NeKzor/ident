@@ -305,7 +305,7 @@ foreach (var conversation in conversations)
     while (current != default)
     {
         if (current.Previous?.HasChoices ?? false)
-            WriteLine($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id} ");
+            WriteLine($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id}");
         current = current.Next;
     }
 
