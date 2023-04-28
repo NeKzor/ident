@@ -27,7 +27,7 @@
 
 * Get [AssetRipper] and extract `level1` file into the `data` folder.
 * Get [dotnet] SDK 7.0
-* Run with `./run.sh` or `./run.ps1`
+* Run with `./run.sh` or `.\run.ps1`
 
 [AssetRipper]: https://github.com/AssetRipper/AssetRipper/releases
 [dotnet]: https://dotnet.microsoft.com/en-us/download/dotnet/scripts
