@@ -130,29 +130,48 @@ namespace Ident.TAS
     [HarmonyPatch(typeof(miniGame), "Update")]
     public class miniGame_Update
     {
-        static bool paused = false;
-        static bool skipped = false;
         private static void Prefix(miniGame __instance, bool ___m_playable)
         {
             if (!__instance.menuObjectLink.paused
                 && ___m_playable
                 && __instance.menuObjectLink.isFullyVisible
-                && !__instance.animator.IsRunning()
-                && !paused)
+                && !__instance.animator.IsRunning())
             {
-                paused = true;
+                
+                Plugin.Log.LogInfo("Pause");
                 var keyboard = InputSystem.GetDevice<Keyboard>();
                 InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Escape));
                 InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Escape));
+                InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.DownArrow));
             }
 
-            // TODO: This should happen when the pause menu is open
-            // if (paused && __instance.pauseLink.menuObjectLink.canvasGroup.interactable && !skipped) {
-            //     skipped = true;
-            //     var keyboard = InputSystem.GetDevice<Keyboard>();
-            //     InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.DownArrow));
-            //     InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.DownArrow));
-            // }
+            if (__instance.menuObjectLink.paused)
+            {
+                var button = __instance.pauseLink.storyDefragButtons.Find((button) => button.name == "SkipMinigame");
+                if (button)
+                {
+                     var hasSelection = (bool?)(typeof(UnityEngine.UI.Selectable)
+                        .GetProperty("hasSelection", BindingFlags.NonPublic | BindingFlags.Instance)
+                        .GetValue(button.GetComponent<PlatformLayer.PLUI_Button>()));
+
+                    if (hasSelection == true)
+                    {
+                        Plugin.Log.LogInfo("Skip");
+                        var keyboard = InputSystem.GetDevice<Keyboard>();
+                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
+                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
+                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.DownArrow));
+                    }
+                }
+            }
+
+            if (__instance.resultsScreen.menuObjectLink.isVisible)
+            {
+                Plugin.Log.LogInfo("Continue");
+                var keyboard = InputSystem.GetDevice<Keyboard>();
+                InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
+                InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
+            }
         }
     }
 }
