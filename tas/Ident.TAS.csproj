@@ -30,6 +30,15 @@
       <Reference Include="UnityEngine.UIModule">
           <HintPath>.\lib\UnityEngine.UIModule.dll</HintPath>
       </Reference>
+      <Reference Include="Ink-Libraries">
+          <HintPath>.\lib\Ink-Libraries.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.UI">
+          <HintPath>.\lib\UnityEngine.UI.dll</HintPath>
+      </Reference>
+      <Reference Include="com.darbotron.platformlayer">
+          <HintPath>.\lib\com.darbotron.platformlayer.dll</HintPath>
+      </Reference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">

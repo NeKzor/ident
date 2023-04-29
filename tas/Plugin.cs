@@ -42,7 +42,11 @@ namespace Ident.TAS
     [HarmonyPatch(typeof(DialogueManager), "Update")]
     public class DialogueManager_Update
     {
-        private static void Prefix(DialogueManager __instance)
+        private static void Prefix(
+            DialogueManager __instance,
+            Ink.Runtime.Story ___m_story,
+            DialogueUIPanel ___m_DialogueUI
+        )
         {
             if (__instance.isPlaying)
             {
@@ -51,20 +55,70 @@ namespace Ident.TAS
                 switch (__instance.state)
                 {
                     case DialogueManager.State.Dialogue:
+                        Plugin.Log.LogInfo("Continue");
                         InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.P));
                         InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.P));
-                        Plugin.Log.LogInfo("Continue");
                         break;
                     case DialogueManager.State.Choice:
-                        // TODO: Insert menu down key presses based on gi.m_story.currentText
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
                         Plugin.Log.LogInfo("Choose");
+                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.RightArrow));
+                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.RightArrow));
+
+                        var conversation = __instance.conversation.info;
+                        if (!Routes.English.TryGetValue(conversation, out var options))
+                        {
+                            Plugin.Log.LogWarning($"Conversation {conversation} not found");
+                            break;
+                        }
+
+                        var text = ___m_story.currentText.TrimEnd();
+                        if (!options.TryGetValue(text, out var buttonIndex))
+                        {
+                            Plugin.Log.LogWarning($"Story text {text} not found");
+                            break;
+                        }
+
+                        if (buttonIndex == 0)
+                        {
+                            InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
+                            InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
+                            break;
+                        }
+
+                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.DownArrow));
+
+                        var m_choiceButtons = (System.Collections.Generic.List<ChoiceButton>)(___m_DialogueUI
+                            .GetType()
+                            .GetField("m_choiceButtons", BindingFlags.NonPublic | BindingFlags.Instance)
+                            .GetValue(___m_DialogueUI));
+
+                        var index = 0;
+
+                        foreach (var choiceButton in m_choiceButtons)
+                        {
+                            if (choiceButton.button is UnityEngine.UI.Button button)
+                            {
+                                var hasSelection = (bool?)(typeof(UnityEngine.UI.Selectable)
+                                    .GetProperty("hasSelection", BindingFlags.NonPublic | BindingFlags.Instance)
+                                    .GetValue(button));
+
+                                if (hasSelection == true && index == buttonIndex)
+                                {
+                                    InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.DownArrow));
+                                    InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
+                                    InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
+                                }
+                            }
+
+                            index += 1;
+                        }
                         break;
                     case DialogueManager.State.NonChoiceButton:
+                        Plugin.Log.LogInfo("Defrag/Stitch/End");
+                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.RightArrow));
+                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.RightArrow));
                         InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
                         InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
-                        Plugin.Log.LogInfo("Defrag/Stitch/End");
                         break;
                     default:
                         break;
