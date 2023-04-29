@@ -21,6 +21,7 @@ using static System.Diagnostics.Trace;
 
 var start = DateTime.Now;
 var rootFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../../../");
+var generateTas = true;
 
 // Supported languages
 var languages = new List<string>()
@@ -49,7 +50,7 @@ if (language == default)
     return;
 }
 
-var resultsFile = $"{rootFolder}results/{language}.txt";
+var resultsFile = generateTas ? $"{rootFolder}tas/routes/{language}.cs" : $"{rootFolder}results/{language}.txt";
 if (File.Exists(resultsFile))
     File.Delete(resultsFile);
 
@@ -57,6 +58,17 @@ Listeners.Clear();
 Listeners.Add(new ConsoleTraceListener());
 Listeners.Add(new TextWriterTraceListener(resultsFile));
 AutoFlush = true;
+
+void Print(string? message)
+{
+    if (!generateTas)
+        WriteLine(message);
+}
+void PrintTas(string? message)
+{
+    if (generateTas)
+        WriteLine(message);
+}
 
 // Dumped level1 file with AssetRipper: https://github.com/AssetRipper/AssetRipper/releases
 var level1TextAssets = $"{rootFolder}data/level1/ExportedProject/Assets/TextAsset/";
@@ -129,6 +141,11 @@ void InitConsequences(Story story)
     }
 }
 
+PrintTas("namespace Ident.TAS;");
+PrintTas("using System.Collections.Generic;");
+PrintTas("public partial class Routes {");
+PrintTas($"public static readonly Dictionary<string, Dictionary<string, int>> {language} = new()\n{{");
+
 var totalKeyPresses = 0;
 
 foreach (var conversation in conversations)
@@ -136,7 +153,7 @@ foreach (var conversation in conversations)
     var file = $"{level1TextAssets}{conversation}_{language}.json";
     var filename = Path.GetFileName(file);
 
-    WriteLine($"Processing {conversation}");
+    Print($"Processing {conversation}");
 
     var story = new Story(File.ReadAllText(file));
     InitConsequences(story);
@@ -261,9 +278,9 @@ foreach (var conversation in conversations)
     if (paths.Any((path) => path.Score != bestScore))
         throw new Exception("failed to filter best paths");
 
-    WriteLine($"Total permutations: {totalPossiblePaths}");
-    WriteLine($"Best outcome:       {bestScore} keypresses");
-    WriteLine($"Best permutations:  {paths.Count}");
+    Print($"Total permutations: {totalPossiblePaths}");
+    Print($"Best outcome:       {bestScore} keypresses");
+    Print($"Best permutations:  {paths.Count}");
 
     totalKeyPresses += bestScore;
 
@@ -296,20 +313,27 @@ foreach (var conversation in conversations)
         bestPath = paths.First();
     }
 
-    WriteLine("Globals:");
+    Print("Globals:");
     foreach (var variable in bestPath.GlobalVariables)
-        WriteLine($"{variable.Key} = {variable.Value}");
+        Print($"{variable.Key} = {variable.Value}");
 
-    WriteLine("Example:");
+    Print("Example:");
+    PrintTas($"    {{\n        \"{conversation}\", new()\n        {{");
     var current = bestPath;
     while (current != default)
     {
         if (current.Previous?.HasChoices ?? false)
-            WriteLine($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id}");
+        {
+            Print($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id}");
+            PrintTas(
+                $"            {{ \"{current.Previous.Id.TrimEnd()}\", {current.Previous.VisitedChoices.Count - 1} }},"
+            );
+        }
         current = current.Next;
     }
 
-    WriteLine("");
+    PrintTas("        }\n    },");
+    Print("");
 
     // Save consequences for next conversations
     foreach (var global in bestPath.GlobalVariables)
@@ -323,17 +347,19 @@ foreach (var conversation in conversations)
     //        if (tempGlobal.TryGetValue(global.Key, out var value))
     //        {
     //            if (value != global.Value)
-    //                WriteLine($"different global {global.Key} = {value} -> {global.Value}");
+    //                Print($"different global {global.Key} = {value} -> {global.Value}");
     //        }
     //        else
     //            tempGlobal[global.Key] = global.Value;
     //    }
     //}
-    //WriteLine();
+    //Print();
 }
 
-WriteLine($"Keypresses: {totalKeyPresses}");
-WriteLine($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} minutes");
+PrintTas("};\n}");
+
+Print($"Keypresses: {totalKeyPresses}");
+Print($"Calculation took {(DateTime.Now - start).TotalMinutes:F2} minutes");
 
 // The ink framework does not have an undo feature.
 // This means we have to reset the story, go back to the head node and
