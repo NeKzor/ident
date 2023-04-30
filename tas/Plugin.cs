@@ -16,6 +16,7 @@ using UnityEngine.InputSystem.LowLevel;
 
 namespace Ident.TAS
 {
+    // ID of each map hotspot location.
     public enum MapHotspotLocationId : int
     {
         Lobby = 0,
@@ -30,11 +31,14 @@ namespace Ident.TAS
     {
         public static ManualLogSource Log;
 
+        // Here we map every conversation that ends with transitioning into the location map
+        // to the next hotspot location that the cursor has to move to.
         public static Dictionary<string, MapHotspotLocationId> NextLocations = new()
         {
             { "a1_s3_adminOfficeFirstMeeting", MapHotspotLocationId.Library },
             // We need to go to the vault after this but for some reason it is called "landingPad".
             // It will be called "vault" once we unlock the real landing pad. I wonder why that is :>
+            // TODO: Figure out why "landingPad" is "vault" and sometimes it's corrected.
             { "a1_s4_firstVisitToLibrary", MapHotspotLocationId.LandingPad },
             { "a1_s5_b_firstCassEncounterPostGame", MapHotspotLocationId.AdminOffice },
             { "a1_s6_b_returnToAdminPostGame", MapHotspotLocationId.Vault },
@@ -43,13 +47,14 @@ namespace Ident.TAS
             { "a2_s3_sierras question", MapHotspotLocationId.Lobby },
             { "a2_s4_b_lobbyGrishCheckInPostGame", MapHotspotLocationId.AdminOffice },
             { "a2_s5_adminReportBack", MapHotspotLocationId.LandingPad },
-            { "a2_s6_landingPadProxyOutcome", MapHotspotLocationId.Vault},
+            { "a2_s6_landingPadProxyOutcome", MapHotspotLocationId.LandingPad},
             { "a2_s7_b_cassIsNotAGuardPostGame", MapHotspotLocationId.Library },
-            { "a2_s8_LibraryClosure", MapHotspotLocationId.Vault },
+            { "a2_s8_LibraryClosure", MapHotspotLocationId.LandingPad },
             { "a2_s9_b_AnotherVaultExplosionPostGame", MapHotspotLocationId.AdminOffice },
             { "a3_s1_alt1_admin", MapHotspotLocationId.LandingPad },
         };
 
+        // Plugin initialization.
         private void Awake()
         {
             Log = Logger;
@@ -57,19 +62,10 @@ namespace Ident.TAS
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
-
-        public static KeyboardState PressKey(Key key)
-        {
-            return new KeyboardState(key);
-        }
-        public static KeyboardState ReleaseKey(Key key)
-        {
-            var state = new KeyboardState();
-            state.Release(key);
-            return state;
-        }
     }
 
+    // Extensions which provide a slightly better API for queueing key states to the input system
+    // and the ability to access private properties of objects.
     public static class UnityExtensions
     {
         public static KeyboardState PressKey(this KeyboardState state, Key key)
@@ -82,12 +78,25 @@ namespace Ident.TAS
             state.Set(key, false);
             return state;
         }
-        public static void QueueState(this Keyboard keyboard, KeyboardState state)
+        public static Keyboard QueueState(this Keyboard keyboard, KeyboardState state)
         {
             InputSystem.QueueStateEvent(keyboard, state);
+            return keyboard;
+        }
+        public static T GetField<T>(this object @object, string name, System.Type type)
+        {
+            var property = type.GetField(name, BindingFlags.NonPublic | BindingFlags.Instance);
+            return (T)(property?.GetValue(@object) ?? default);
+        }
+        public static T GetProperty<T>(this object @object, string name, System.Type type)
+        {
+            var property = type.GetProperty(name, BindingFlags.NonPublic | BindingFlags.Instance);
+            return (T)(property?.GetValue(@object) ?? default);
         }
     }
 
+    // Hook into the dialogue manager and handle each dialogue state if it is playing,
+    // otherwise we want to handle the intro or the location map.
     [HarmonyPatch(typeof(DialogueManager), "Update")]
     public class DialogueManager_Update
     {
@@ -99,77 +108,109 @@ namespace Ident.TAS
         {
             if (__instance.isPlaying)
             {
-                var keyboard = InputSystem.GetDevice<Keyboard>();
-
                 switch (__instance.state)
                 {
                     case DialogueManager.State.Dialogue:
-                        Plugin.Log.LogInfo("Continue");
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.P));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.P));
-                        break;
+                        {
+                            Plugin.Log.LogInfo("Continue");
+
+                            InputSystem.GetDevice<Keyboard>()
+                                .QueueState(new KeyboardState().PressKey(Key.P))
+                                .QueueState(new KeyboardState().ReleaseKey(Key.P));
+
+                            break;
+                        }
                     case DialogueManager.State.Choice:
-                        Plugin.Log.LogInfo("Choose");
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.RightArrow));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.RightArrow));
-
-                        var conversation = __instance.conversation.info;
-                        if (!Routes.English.TryGetValue(conversation, out var options))
                         {
-                            Plugin.Log.LogWarning($"Conversation {conversation} not found");
-                            break;
-                        }
+                            Plugin.Log.LogInfo("Choose");
 
-                        var text = ___m_story.currentText.TrimEnd();
-                        if (!options.TryGetValue(text, out var buttonIndex))
-                        {
-                            Plugin.Log.LogWarning($"Story text {text} not found");
-                            break;
-                        }
+                            InputSystem.GetDevice<Keyboard>()
+                                .QueueState(new KeyboardState().PressKey(Key.RightArrow))
+                                .QueueState(new KeyboardState().ReleaseKey(Key.RightArrow));
 
-                        if (buttonIndex == 0)
-                        {
-                            InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                            InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
-                            break;
-                        }
+                            // Get all route options based on the current conversation.
 
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.DownArrow));
-
-                        var m_choiceButtons = (List<ChoiceButton>)(___m_DialogueUI
-                            .GetType()
-                            .GetField("m_choiceButtons", BindingFlags.NonPublic | BindingFlags.Instance)
-                            .GetValue(___m_DialogueUI));
-
-                        var index = 0;
-
-                        foreach (var choiceButton in m_choiceButtons)
-                        {
-                            if (choiceButton.button is UnityEngine.UI.Button button)
+                            var conversation = __instance.conversation.info;
+                            if (!Routes.English.TryGetValue(conversation, out var options))
                             {
-                                var hasSelection = (bool?)(typeof(UnityEngine.UI.Selectable)
-                                    .GetProperty("hasSelection", BindingFlags.NonPublic | BindingFlags.Instance)
-                                    .GetValue(button));
-
-                                if (hasSelection == true && index == buttonIndex)
-                                {
-                                    InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.DownArrow));
-                                    InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                                    InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
-                                }
+                                Plugin.Log.LogWarning($"Conversation {conversation} not found");
+                                break;
                             }
 
-                            Plugin.Log.LogInfo($"Button index: {index}");
-                            index += 1;
+                            // Get the button index for the choice we have to make  based on the current text.
+
+                            var text = ___m_story.currentText.TrimEnd();
+                            if (!options.TryGetValue(text, out var buttonIndex))
+                            {
+                                Plugin.Log.LogWarning($"Story text {text} not found");
+                                break;
+                            }
+
+                            // Simply select the first button if we don't have to move down.
+                            if (buttonIndex == 0)
+                            {
+                                InputSystem.GetDevice<Keyboard>()
+                                    .QueueState(new KeyboardState().PressKey(Key.Space))
+                                    .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+
+                                break;
+                            }
+
+                            // Try to find the right choice by starting to select the next button.
+
+                            InputSystem.GetDevice<Keyboard>()
+                                .QueueState(new KeyboardState().PressKey(Key.DownArrow));
+
+                            var m_choiceButtons = ___m_DialogueUI
+                                .GetField<List<ChoiceButton>>("m_choiceButtons", typeof(DialogueUIPanel));
+
+                            var index = -1;
+
+                            foreach (var choiceButton in m_choiceButtons)
+                            {
+                                index += 1;
+                                Plugin.Log.LogInfo($"Button index = {index} | Want index = {buttonIndex}");
+
+                                if (index != buttonIndex)
+                                    continue;
+
+                                if (choiceButton.button is not UnityEngine.UI.Button button)
+                                    continue;
+
+                                var hasSelection = button
+                                    .GetProperty<bool>("hasSelection", typeof(UnityEngine.UI.Selectable));
+
+                                Plugin.Log.LogInfo($"hasSelection = {hasSelection}");
+
+                                if (hasSelection is not true)
+                                    continue;
+
+                                // We selected the correct button, so let's make the choice.
+
+                                InputSystem.GetDevice<Keyboard>()
+                                    .QueueState(new KeyboardState().ReleaseKey(Key.DownArrow))
+                                    .QueueState(new KeyboardState().PressKey(Key.Space))
+                                    .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+
+                                break;
+                            }
+
+                            break;
                         }
-                        break;
                     case DialogueManager.State.NonChoiceButton:
-                        Plugin.Log.LogInfo("Defrag/Stitch/End");
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.RightArrow));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.RightArrow));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
-                        break;
+                        {
+                            Plugin.Log.LogInfo("Defrag/Stitch/End");
+
+                            // TODO: Is right arrow input even needed here?
+
+                            InputSystem.GetDevice<Keyboard>()
+                                .QueueState(new KeyboardState().PressKey(Key.RightArrow))
+                                .QueueState(new KeyboardState().ReleaseKey(Key.RightArrow))
+                                .QueueState(new KeyboardState().PressKey(Key.Space))
+                                .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+
+                            break;
+                        }
                     default:
                         break;
                 }
@@ -181,18 +222,17 @@ namespace Ident.TAS
                     case "titlesequence":
                         {
                             Plugin.Log.LogInfo("Skip");
-                            var keyboard = InputSystem.GetDevice<Keyboard>();
-                            InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Escape));
-                            InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Escape));
+
+                            InputSystem.GetDevice<Keyboard>()
+                                .QueueState(new KeyboardState().PressKey(Key.Escape))
+                                .QueueState(new KeyboardState().ReleaseKey(Key.Escape));
+
                             break;
                         }
                     case "locMap":
                         {
-                            var env = GameManager.Instance.Environment;
-                            var m_hotspots = (HashSet<EnvironmentHotspot>)(env
-                                .GetType()
-                                .GetField("m_hotspots", BindingFlags.NonPublic | BindingFlags.Instance)
-                                .GetValue(env));
+                            // Find the next location ID based on the last conversation.
+                            // NOTE: This is not correct if we load from a save.
 
                             var conversation = __instance.conversation?.info ?? "a1_s3_adminOfficeFirstMeeting";
                             if (!Plugin.NextLocations.TryGetValue(conversation, out var nextLocation))
@@ -201,41 +241,48 @@ namespace Ident.TAS
                                 break;
                             }
 
-                            var mouse = InputSystem.GetDevice<Mouse>();
-                            var cursor = GameManager.Instance.Environment.VirtualCursor;
-                            var camera = GameManager.Instance.Cameras.UiCamera;
+                            var env = GameManager.Instance.Environment;
+                            var m_hotspots = env
+                                .GetField<HashSet<EnvironmentHotspot>>("m_hotspots", typeof(EnvironmentManager));
 
-                            var nextHotspot = m_hotspots.FirstOrDefault((hotspot) => {
-                                var _LocationID = (int)(hotspot
-                                    .GetType()
-                                    .GetField("_LocationID", BindingFlags.NonPublic | BindingFlags.Instance)
-                                    .GetValue(hotspot));
+                            // Find the next hotspot that we want to move to based on the location ID.
 
-                                return _LocationID == (int)nextLocation;
+                            var nextHotspot = m_hotspots.FirstOrDefault((hotspot) =>
+                            {
+                                return hotspot
+                                    .GetField<int?>("_LocationID", hotspot.GetType()) == (int)nextLocation;
                             });
 
                             if (nextHotspot is null)
-                                break;
-
-                            var m_highlighted = (EnvironmentHotspot)(typeof(VirtualCursor)
-                                    .GetField("m_highlighted", BindingFlags.NonPublic | BindingFlags.Instance)
-                                    .GetValue(cursor));
-
-                            var keyboard = InputSystem.GetDevice<Keyboard>();
-                            var state = new KeyboardState();
-
-                            if (m_highlighted == nextHotspot)
                             {
-                                keyboard.QueueState(state.PressKey(Key.Space)
-                                    .ReleaseKey(Key.RightArrow)
-                                    .ReleaseKey(Key.LeftArrow)
-                                    .ReleaseKey(Key.UpArrow)
-                                    .ReleaseKey(Key.DownArrow)
-                                );
-                                keyboard.QueueState(new KeyboardState().ReleaseKey(Key.Space));
+                                Plugin.Log.LogWarning($"Hotspot location id {nextLocation} not found");
                                 break;
                             }
 
+                            // Check if the cursor is highlighting the hotspot, then load it.
+
+                            var cursor = GameManager.Instance.Environment.VirtualCursor;
+                            var m_highlighted = cursor
+                                .GetField<EnvironmentHotspot>("m_highlighted", typeof(VirtualCursor));
+
+                            if (m_highlighted == nextHotspot)
+                            {
+                                InputSystem.GetDevice<Keyboard>()
+                                    .QueueState(new KeyboardState()
+                                        .PressKey(Key.Space)
+                                        .ReleaseKey(Key.RightArrow)
+                                        .ReleaseKey(Key.LeftArrow)
+                                        .ReleaseKey(Key.UpArrow)
+                                        .ReleaseKey(Key.DownArrow)
+                                    )
+                                    .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+
+                                break;
+                            }
+
+                            // Otherwise, move until the cursor highlights the hotspot location.
+
+                            var state = new KeyboardState();
                             var hotspotPosition = nextHotspot.GetViewportPosition();
                             var cursorPosition = cursor.position;
 
@@ -251,16 +298,7 @@ namespace Ident.TAS
                             else if (hotspotPosition.y < cursorPosition.y)
                                 state = state.PressKey(Key.DownArrow).ReleaseKey(Key.UpArrow);
 
-                            keyboard.QueueState(state);
-
-                            // var screenPoint = camera.ViewportToScreenPoint(hotspotPosition);
-
-                            // Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Viewport = {hotspotPosition}");
-
-                            // InputState.Change(mouse, new MouseState() { position = screenPoint });
-                            // //InputSystem.QueueStateEvent(mouse, new MouseState() { position = screenPoint });
-
-                            // Plugin.Log.LogInfo($"{PlatformLayer.PLManager.Get().InputManager.MouseIsInActiveUse()} | {PlatformLayer.PLManager.Get().InputManager.UINavigationMode.GetCurrentMode()}");
+                            InputSystem.GetDevice<Keyboard>().QueueState(state);
 
                             break;
                         }
@@ -269,49 +307,57 @@ namespace Ident.TAS
         }
     }
 
+    // Hook into the defrag mini game so we can press the skip button in the pause menu :^)
     [HarmonyPatch(typeof(miniGame), "Update")]
     public class miniGame_Update
     {
         private static void Prefix(miniGame __instance, bool ___m_playable)
         {
+            // NOTE: The game will buffer our pause input until the animator has finished.
+            // TODO: Buffering does not matter, right?
             if (!__instance.menuObjectLink.paused
                 && ___m_playable
                 && __instance.menuObjectLink.isFullyVisible
                 && !__instance.animator.IsRunning())
             {
                 Plugin.Log.LogInfo("Pause");
-                var keyboard = InputSystem.GetDevice<Keyboard>();
-                InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Escape));
-                InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Escape));
-                InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.DownArrow));
+
+                InputSystem.GetDevice<Keyboard>()
+                    .QueueState(new KeyboardState().PressKey(Key.Escape))
+                    .QueueState(new KeyboardState().ReleaseKey(Key.Escape))
+                    .QueueState(new KeyboardState().PressKey(Key.DownArrow));
             }
 
+            // Once paused, find the skip button and select it.
             if (__instance.menuObjectLink.paused)
             {
                 var button = __instance.pauseLink.storyDefragButtons.Find((button) => button.name == "SkipMinigame");
                 if (button)
                 {
-                    var hasSelection = (bool?)(typeof(UnityEngine.UI.Selectable)
-                       .GetProperty("hasSelection", BindingFlags.NonPublic | BindingFlags.Instance)
-                       .GetValue(button.GetComponent<PlatformLayer.PLUI_Button>()));
+                    var hasSelection = button
+                        .GetComponent<PlatformLayer.PLUI_Button>()
+                        .GetProperty<bool>("hasSelection", typeof(UnityEngine.UI.Selectable));
 
-                    if (hasSelection == true)
+                    if (hasSelection is true)
                     {
                         Plugin.Log.LogInfo("Skip");
-                        var keyboard = InputSystem.GetDevice<Keyboard>();
-                        InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
-                        InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.DownArrow));
+
+                        InputSystem.GetDevice<Keyboard>()
+                            .QueueState(new KeyboardState().PressKey(Key.Space))
+                            .QueueState(new KeyboardState().ReleaseKey(Key.Space))
+                            .QueueState(new KeyboardState().ReleaseKey(Key.DownArrow));
                     }
                 }
             }
 
+            // Continue when the end result screen shows up.
             if (__instance.resultsScreen.menuObjectLink.isVisible)
             {
                 Plugin.Log.LogInfo("Continue");
-                var keyboard = InputSystem.GetDevice<Keyboard>();
-                InputSystem.QueueStateEvent(keyboard, Plugin.PressKey(Key.Space));
-                InputSystem.QueueStateEvent(keyboard, Plugin.ReleaseKey(Key.Space));
+
+                InputSystem.GetDevice<Keyboard>()
+                    .QueueState(new KeyboardState().PressKey(Key.Space))
+                    .QueueState(new KeyboardState().ReleaseKey(Key.Space));
             }
         }
     }
