@@ -144,7 +144,7 @@ void InitConsequences(Story story)
 PrintTas("namespace Ident.TAS;");
 PrintTas("using System.Collections.Generic;");
 PrintTas("public partial class Routes {");
-PrintTas($"public static readonly Dictionary<string, Dictionary<string, int>> {language} = new()\n{{");
+PrintTas($"public static readonly Dictionary<string, Dictionary<string, (int, string)>> {language} = new()\n{{");
 
 var totalKeyPresses = 0;
 
@@ -326,7 +326,7 @@ foreach (var conversation in conversations)
         {
             Print($"[{current.Previous.VisitedChoices.Count - 1}] {current.Id}");
             PrintTas(
-                $"            {{ \"{current.Previous.Id.TrimEnd()}\", {current.Previous.VisitedChoices.Count - 1} }},"
+                $"            {{ \"{current.Previous.Id.TrimEnd()}\", ({current.Previous.VisitedChoices.Count - 1}, \"{current.Id.Substring(2)}\") }},"
             );
         }
         current = current.Next;
