@@ -11,6 +11,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using Ident.Minigame;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
@@ -26,19 +27,26 @@ namespace Ident.TAS
         Vault = 4,
     }
 
+    // Game scenes.
+    public static class Scene
+    {
+        public const string Intro = "titlesequence";
+        public const string Map = "locMap";
+        public const string Credits = "locCredits";
+    }
+
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
     {
-        public static ManualLogSource Log;
+        public static Plugin Instance { get; private set; }
+        public static ManualLogSource Log { get; private set; }
 
         // Here we map every conversation that ends with transitioning into the location map
         // to the next hotspot location that the cursor has to move to.
         public static Dictionary<string, MapHotspotLocationId> NextLocations = new()
         {
             { "a1_s3_adminOfficeFirstMeeting", MapHotspotLocationId.Library },
-            // We need to go to the vault after this but for some reason it is called "landingPad".
-            // It will be called "vault" once we unlock the real landing pad. I wonder why that is :>
-            // TODO: Figure out why "landingPad" is "vault" and sometimes it's corrected.
+            // For some reason the "landingPad" is called "vault" and the "vault" is called "landingPad" :>
             { "a1_s4_firstVisitToLibrary", MapHotspotLocationId.LandingPad },
             { "a1_s5_b_firstCassEncounterPostGame", MapHotspotLocationId.AdminOffice },
             { "a1_s6_b_returnToAdminPostGame", MapHotspotLocationId.Vault },
@@ -46,21 +54,67 @@ namespace Ident.TAS
             { "a2_s2_b_returnToCassPostGame", MapHotspotLocationId.Library },
             { "a2_s3_sierras question", MapHotspotLocationId.Lobby },
             { "a2_s4_b_lobbyGrishCheckInPostGame", MapHotspotLocationId.AdminOffice },
-            { "a2_s5_adminReportBack", MapHotspotLocationId.LandingPad },
+            { "a2_s5_adminReportBack", MapHotspotLocationId.Vault },
             { "a2_s6_landingPadProxyOutcome", MapHotspotLocationId.LandingPad},
             { "a2_s7_b_cassIsNotAGuardPostGame", MapHotspotLocationId.Library },
             { "a2_s8_LibraryClosure", MapHotspotLocationId.LandingPad },
             { "a2_s9_b_AnotherVaultExplosionPostGame", MapHotspotLocationId.AdminOffice },
-            { "a3_s1_alt1_admin", MapHotspotLocationId.LandingPad },
+            { "a3_s1_alt1_admin", MapHotspotLocationId.Vault },
         };
+
+        public float TotalTime { get; private set; } = 0.0f;
+        public bool IsTimerRunning { get; private set; } = false;
 
         // Plugin initialization.
         private void Awake()
         {
+            Instance = this;
             Log = Logger;
             Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 
             Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+        }
+
+        // Start, stop or update the speedrun timer.
+        private void Update()
+        {
+            var gameManager = Singleton<DialogueManager>.Instance;
+            if (!gameManager)
+                return;
+
+            var m_isInSceneTransition = gameManager.sceneHandlerLink
+                .GetField<bool>("m_isInSceneTransition", typeof(sceneHandler));
+
+            if (m_isInSceneTransition)
+                return;
+
+            if (!IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Intro)
+                IsTimerRunning = true;
+            else if (IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Credits)
+                IsTimerRunning = false;
+
+            if (IsTimerRunning)
+                TotalTime += Time.unscaledDeltaTime;
+        }
+
+        // Draw the speedrun timer.
+        private void OnGUI()
+        {
+            // NOTE: Position depends on screen resolution which might not be ideal.
+
+            GUI.Label(
+                new(10, Screen.height - 90, 64, 10),
+                System.TimeSpan.FromSeconds(TotalTime).ToString("mm':'ss'.'fff"),
+                new()
+                {
+                    fontSize = 18,
+                    normal = new()
+                    {
+                        textColor = new(255, 255, 255),
+                        background = GUI.skin.label.normal.background,
+                    },
+                }
+            );
         }
     }
 
@@ -106,6 +160,9 @@ namespace Ident.TAS
             DialogueUIPanel ___m_DialogueUI
         )
         {
+            if (!Plugin.Instance.IsTimerRunning)
+                return;
+
             if (__instance.isPlaying)
             {
                 switch (__instance.state)
@@ -140,15 +197,28 @@ namespace Ident.TAS
                             // Get the button index for the choice we have to make  based on the current text.
 
                             var text = ___m_story.currentText.TrimEnd();
-                            if (!options.TryGetValue(text, out var buttonIndex))
+                            if (!options.TryGetValue(text, out var buttonStrategy))
                             {
                                 Plugin.Log.LogWarning($"Story text {text} not found");
                                 break;
                             }
 
+                            var (buttonIndex, requiredButtonText) = buttonStrategy;
+                            var m_choiceButtons = ___m_DialogueUI
+                                .GetField<List<ChoiceButton>>("m_choiceButtons", typeof(DialogueUIPanel));
+
                             // Simply select the first button if we don't have to move down.
                             if (buttonIndex == 0)
                             {
+                                var choiceButtonText = m_choiceButtons.First()
+                                    .GetField<string>("m_title", typeof(ChoiceButton));
+                                if (choiceButtonText != requiredButtonText)
+                                {
+                                    Plugin.Log.LogWarning("choiceButtonText != requiredButtonText");
+                                    Plugin.Log.LogWarning($"{choiceButtonText} != {requiredButtonText}");
+                                    break;
+                                }
+
                                 InputSystem.GetDevice<Keyboard>()
                                     .QueueState(new KeyboardState().PressKey(Key.Space))
                                     .QueueState(new KeyboardState().ReleaseKey(Key.Space));
@@ -160,9 +230,6 @@ namespace Ident.TAS
 
                             InputSystem.GetDevice<Keyboard>()
                                 .QueueState(new KeyboardState().PressKey(Key.DownArrow));
-
-                            var m_choiceButtons = ___m_DialogueUI
-                                .GetField<List<ChoiceButton>>("m_choiceButtons", typeof(DialogueUIPanel));
 
                             var index = -1;
 
@@ -184,6 +251,14 @@ namespace Ident.TAS
 
                                 if (hasSelection is not true)
                                     continue;
+
+                                var choiceButtonText = choiceButton.GetField<string>("m_title", typeof(ChoiceButton));
+                                if (choiceButtonText != requiredButtonText)
+                                {
+                                    Plugin.Log.LogWarning("choiceButtonText != requiredButtonText");
+                                    Plugin.Log.LogWarning($"{choiceButtonText} != {requiredButtonText}");
+                                    break;
+                                }
 
                                 // We selected the correct button, so let's make the choice.
 
@@ -219,7 +294,7 @@ namespace Ident.TAS
             {
                 switch (__instance.menuConductorLink.sceneHandlerLink.currentScene)
                 {
-                    case "titlesequence":
+                    case Scene.Intro:
                         {
                             Plugin.Log.LogInfo("Skip");
 
@@ -229,7 +304,7 @@ namespace Ident.TAS
 
                             break;
                         }
-                    case "locMap":
+                    case Scene.Map:
                         {
                             // Find the next location ID based on the last conversation.
                             // NOTE: This is not correct if we load from a save.
@@ -313,6 +388,9 @@ namespace Ident.TAS
     {
         private static void Prefix(miniGame __instance, bool ___m_playable)
         {
+            if (!Plugin.Instance.IsTimerRunning)
+                return;
+
             // NOTE: The game will buffer our pause input until the animator has finished.
             // TODO: Buffering does not matter, right?
             if (!__instance.menuObjectLink.paused

@@ -14,30 +14,38 @@
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
     <PackageReference Include="HarmonyX" Version="2.10.1" />
-    <PackageReference Include="UnityEngine.Modules" Version="5.6.0" IncludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup>
       <Reference Include="Ident">
           <HintPath>.\lib\Assembly-CSharp.dll</HintPath>
       </Reference>
-      <Reference Include="UnityEngine.CoreModule">
-          <HintPath>.\lib\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
-      <Reference Include="Unity.InputSystem">
-          <HintPath>.\lib\Unity.InputSystem.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.UIModule">
-          <HintPath>.\lib\UnityEngine.UIModule.dll</HintPath>
+      <Reference Include="com.darbotron.platformlayer">
+          <HintPath>.\lib\com.darbotron.platformlayer.dll</HintPath>
       </Reference>
       <Reference Include="Ink-Libraries">
           <HintPath>.\lib\Ink-Libraries.dll</HintPath>
       </Reference>
+      <Reference Include="Unity.InputSystem">
+          <HintPath>.\lib\Unity.InputSystem.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+          <HintPath>.\lib\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine">
+          <HintPath>.\lib\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.IMGUIModule">
+          <HintPath>.\lib\UnityEngine.IMGUIModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.TextRenderingModule">
+          <HintPath>.\lib\UnityEngine.TextRenderingModule.dll</HintPath>
+      </Reference>
       <Reference Include="UnityEngine.UI">
           <HintPath>.\lib\UnityEngine.UI.dll</HintPath>
       </Reference>
-      <Reference Include="com.darbotron.platformlayer">
-          <HintPath>.\lib\com.darbotron.platformlayer.dll</HintPath>
+      <Reference Include="UnityEngine.UIModule">
+          <HintPath>.\lib\UnityEngine.UIModule.dll</HintPath>
       </Reference>
   </ItemGroup>
   
