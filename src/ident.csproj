@@ -8,6 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="..\lib\ink-engine-runtime.dll" />
+      <Reference Include="Ink-Libraries">
+          <HintPath>.\lib\Ink-Libraries.dll</HintPath>
+      </Reference>
   </ItemGroup>
 </Project>
