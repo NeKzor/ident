@@ -31,9 +31,3 @@
 
 [AssetRipper]: https://github.com/AssetRipper/AssetRipper/releases
 [dotnet]: https://dotnet.microsoft.com/en-us/download/dotnet/scripts
-
-## TODO
-
-* Can we optimize for performance and for resources?
-* Count non-text based keypresses
-* Create a tool assisted speedrun
