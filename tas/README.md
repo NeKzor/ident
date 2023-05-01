@@ -8,8 +8,14 @@ This is a [BepInEx 5] plugin which plays the game all by itself in the fastest w
 
 Copy these game files from `identity_Data\Managed` into the `./lib/` folder:
 - `Assembly-CSharp.dll`
+- `com.darbotron.platformlayer.dll`
+- `Ink-Libraries.dll`
 - `Unity.InputSystem.dll`
 - `UnityEngine.CoreModule.dll`
+- `UnityEngine.dll`
+- `UnityEngine.IMGUIModule.dll`
+- `UnityEngine.TextRenderingModule.dll`
+- `UnityEngine.UI.dll`
 - `UnityEngine.UIModule.dll`
 
 Run `.\build.ps1`.
@@ -22,6 +28,10 @@ It's recommended to create a softlink to the output directory with Powershell/CM
 ```ps
 cmd /c mklink /d "C:\Program Files (x86)\Steam\steamapps\common\Tron Identity\BepInEx\plugins\Ident.TAS" %cd%\bin\Release\net48
 ```
+
+## Timer
+
+The BepInEx config option `HideManagerGameObject` needs to be set to `true`.
 
 ## Used tools
 
