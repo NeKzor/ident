@@ -2,6 +2,7 @@
 reversed/
 data/**
 !data/README.md
+src/lib/*.dll
 tas/lib/*.dll
 
 ## Ignore Visual Studio temporary files, build results, and
