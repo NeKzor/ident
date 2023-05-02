@@ -171,7 +171,7 @@ public static readonly Dictionary<string, Dictionary<string, (int, string)>> Eng
         {
             { "It's quiet for now. No sign of Proxy. None of my men have spotted her, and no call-ins. You wouldn't know anything about that, would you?", (0, "I've no idea.") },
             { "Did she say anything to you about her plans?", (0, "Nothing.") },
-            { "Ask your questions. Make it quick.", (6, "No more questions.") },
+            { "Ask your questions. Make it quick.", (5, "No more questions.") },
         }
     },
     {
