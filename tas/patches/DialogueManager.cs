@@ -44,10 +44,6 @@ public class DialogueManager_Update
                     {
                         Plugin.Log.LogInfo("Choose");
 
-                        InputSystem.GetDevice<Keyboard>()
-                            .QueueState(new KeyboardState().PressKey(Key.RightArrow))
-                            .QueueState(new KeyboardState().ReleaseKey(Key.RightArrow));
-
                         // Get all route options based on the current conversation.
 
                         var conversation = __instance.conversation.info;
@@ -139,11 +135,7 @@ public class DialogueManager_Update
                     {
                         Plugin.Log.LogInfo("Defrag/Stitch/End");
 
-                        // TODO: Is right arrow input even needed here?
-
                         InputSystem.GetDevice<Keyboard>()
-                            .QueueState(new KeyboardState().PressKey(Key.RightArrow))
-                            .QueueState(new KeyboardState().ReleaseKey(Key.RightArrow))
                             .QueueState(new KeyboardState().PressKey(Key.Space))
                             .QueueState(new KeyboardState().ReleaseKey(Key.Space));
 
