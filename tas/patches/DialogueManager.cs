@@ -17,6 +17,8 @@ namespace Ident.TAS;
 [HarmonyPatch(typeof(DialogueManager), "Update")]
 public class DialogueManager_Update
 {
+    public static bool MovedCursor = false;
+
     private static void Prefix(
         DialogueManager __instance,
         Ink.Runtime.Story ___m_story,
@@ -66,74 +68,52 @@ public class DialogueManager_Update
                         var m_choiceButtons = ___m_DialogueUI
                             .GetField<List<ChoiceButton>>("m_choiceButtons", typeof(DialogueUIPanel));
 
-                        // Simply select the first button if we don't have to move down.
-                        if (buttonIndex == 0)
-                        {
-                            var choiceButtonText = m_choiceButtons.First()
-                                .GetField<string>("m_title", typeof(ChoiceButton));
-                            if (choiceButtonText != requiredButtonText)
-                            {
-                                Plugin.Log.LogWarning("choiceButtonText != requiredButtonText");
-                                Plugin.Log.LogWarning($"{choiceButtonText} != {requiredButtonText}");
-                                break;
-                            }
+                        var choiceButton = m_choiceButtons[buttonIndex];
+                        var buttonPosition = choiceButton.transform.position;
+                        var camera = GameManager.Instance.Cameras.UiCamera;
 
-                            InputSystem.GetDevice<Keyboard>()
-                                .QueueState(new KeyboardState().PressKey(Key.Space))
-                                .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+                        var screenPoint = camera.WorldToScreenPoint(buttonPosition);
+                        screenPoint.x -= MovedCursor ? 30 : 20;
+                        MovedCursor = !MovedCursor;
 
+                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Button = {buttonPosition}");
+
+                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
+
+                        if (choiceButton.button is not UnityEngine.UI.Button button)
                             break;
-                        }
 
-                        // Try to find the right choice by starting to select the next button.
+                        var hasSelection = button
+                            .GetProperty<bool>("hasSelection", typeof(UnityEngine.UI.Selectable));
+
+                        if (hasSelection is not true)
+                            break;
 
                         InputSystem.GetDevice<Keyboard>()
-                            .QueueState(new KeyboardState().PressKey(Key.DownArrow));
-
-                        var index = -1;
-
-                        foreach (var choiceButton in m_choiceButtons)
-                        {
-                            index += 1;
-                            Plugin.Log.LogInfo($"Button index = {index} | Want index = {buttonIndex}");
-
-                            if (index != buttonIndex)
-                                continue;
-
-                            if (choiceButton.button is not UnityEngine.UI.Button button)
-                                continue;
-
-                            var hasSelection = button
-                                .GetProperty<bool>("hasSelection", typeof(UnityEngine.UI.Selectable));
-
-                            Plugin.Log.LogInfo($"hasSelection = {hasSelection}");
-
-                            if (hasSelection is not true)
-                                continue;
-
-                            var choiceButtonText = choiceButton.GetField<string>("m_title", typeof(ChoiceButton));
-                            if (choiceButtonText != requiredButtonText)
-                            {
-                                Plugin.Log.LogWarning("choiceButtonText != requiredButtonText");
-                                Plugin.Log.LogWarning($"{choiceButtonText} != {requiredButtonText}");
-                                break;
-                            }
-
-                            // We selected the correct button, so let's make the choice.
-
-                            InputSystem.GetDevice<Keyboard>()
-                                .QueueState(new KeyboardState().ReleaseKey(Key.DownArrow))
-                                .QueueState(new KeyboardState().PressKey(Key.Space))
-                                .QueueState(new KeyboardState().ReleaseKey(Key.Space));
-
-                            break;
-                        }
+                            .QueueState(new KeyboardState().PressKey(Key.Space))
+                            .QueueState(new KeyboardState().ReleaseKey(Key.Space));
 
                         break;
                     }
                 case DialogueManager.State.NonChoiceButton:
                     {
                         Plugin.Log.LogInfo("Defrag/Stitch/End");
+
+                        var m_StitchButton = ___m_DialogueUI
+                            .GetField<UnityEngine.GameObject>("m_StitchButton", typeof(DialogueUIPanel));
+
+                        var buttonPosition = m_StitchButton.transform.position;
+                        var camera = GameManager.Instance.Cameras.UiCamera;
+
+                        var screenPoint = camera.WorldToScreenPoint(buttonPosition);
+                        screenPoint.x -= MovedCursor ? 30 : 20;
+                        MovedCursor = !MovedCursor;
+
+                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Button = {buttonPosition}");
+
+                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
+
+                        InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() { }.WithButton(MouseButton.Left));
 
                         InputSystem.GetDevice<Keyboard>()
                             .QueueState(new KeyboardState().PressKey(Key.Space))
@@ -212,23 +192,37 @@ public class DialogueManager_Update
 
                         // Otherwise, move until the cursor highlights the hotspot location.
 
-                        var state = new KeyboardState();
                         var hotspotPosition = nextHotspot.GetViewportPosition();
-                        var cursorPosition = cursor.position;
+                        var camera = GameManager.Instance.Cameras.UiCamera;
 
-                        Plugin.Log.LogInfo($"Target = {hotspotPosition} | Cursor = {cursorPosition}");
+                        var screenPoint = camera.ViewportToScreenPoint(hotspotPosition);
+                        screenPoint.y += MovedCursor ? 1 : 0;
+                        screenPoint.x += MovedCursor ? 1 : 0;
+                        MovedCursor = !MovedCursor;
 
-                        if (hotspotPosition.x > cursorPosition.x)
-                            state = state.PressKey(Key.RightArrow).ReleaseKey(Key.LeftArrow);
-                        else if (hotspotPosition.x < cursorPosition.x)
-                            state = state.PressKey(Key.LeftArrow).ReleaseKey(Key.RightArrow);
+                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Hotspot = {hotspotPosition} | Mouse = {Mouse.current.position}");
 
-                        if (hotspotPosition.y > cursorPosition.y)
-                            state = state.PressKey(Key.UpArrow).ReleaseKey(Key.DownArrow);
-                        else if (hotspotPosition.y < cursorPosition.y)
-                            state = state.PressKey(Key.DownArrow).ReleaseKey(Key.UpArrow);
+                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
 
-                        InputSystem.GetDevice<Keyboard>().QueueState(state);
+                        InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() { }.WithButton(MouseButton.Left));
+
+                        // var state = new KeyboardState();
+                        // var hotspotPosition = nextHotspot.GetViewportPosition();
+                        // var cursorPosition = cursor.position;
+
+                        // Plugin.Log.LogInfo($"Target = {hotspotPosition} | Cursor = {cursorPosition}");
+
+                        // if (hotspotPosition.x > cursorPosition.x)
+                        //     state = state.PressKey(Key.RightArrow).ReleaseKey(Key.LeftArrow);
+                        // else if (hotspotPosition.x < cursorPosition.x)
+                        //     state = state.PressKey(Key.LeftArrow).ReleaseKey(Key.RightArrow);
+
+                        // if (hotspotPosition.y > cursorPosition.y)
+                        //     state = state.PressKey(Key.UpArrow).ReleaseKey(Key.DownArrow);
+                        // else if (hotspotPosition.y < cursorPosition.y)
+                        //     state = state.PressKey(Key.DownArrow).ReleaseKey(Key.UpArrow);
+
+                        // InputSystem.GetDevice<Keyboard>().QueueState(state);
 
                         break;
                     }

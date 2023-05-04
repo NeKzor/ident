@@ -15,6 +15,9 @@ namespace Ident.TAS;
 [HarmonyPatch(typeof(miniGame), "Update")]
 public class miniGame_Update
 {
+    public static bool MovedCursor = false;
+    public static bool Once = false;
+
     private static void Prefix(miniGame __instance, bool ___m_playable)
     {
         if (!Plugin.Instance.IsTimerRunning)
@@ -29,15 +32,22 @@ public class miniGame_Update
         {
             Plugin.Log.LogInfo("Pause");
 
+            Once = false;
             InputSystem.GetDevice<Keyboard>()
                 .QueueState(new KeyboardState().PressKey(Key.Escape))
-                .QueueState(new KeyboardState().ReleaseKey(Key.Escape))
-                .QueueState(new KeyboardState().PressKey(Key.DownArrow));
+                .QueueState(new KeyboardState().ReleaseKey(Key.Escape));
+
+            InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() {}.WithButton(MouseButton.Left));
         }
 
         // Once paused, find the skip button and select it.
         if (__instance.menuObjectLink.paused)
         {
+            if (!Once) {
+                Once = true;
+                InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() {}.WithButton(MouseButton.Left, false));
+            }
+
             var button = __instance.pauseLink.storyDefragButtons.Find((button) => button.name == "SkipMinigame");
             if (button)
             {
@@ -51,8 +61,21 @@ public class miniGame_Update
 
                     InputSystem.GetDevice<Keyboard>()
                         .QueueState(new KeyboardState().PressKey(Key.Space))
-                        .QueueState(new KeyboardState().ReleaseKey(Key.Space))
-                        .QueueState(new KeyboardState().ReleaseKey(Key.DownArrow));
+                        .QueueState(new KeyboardState().ReleaseKey(Key.Space));
+                }
+                else
+                {
+                    //var cursor = GameManager.Instance.Environment.VirtualCursor;
+                    var buttonPosition = button.transform.position;
+                    var camera = GameManager.Instance.Cameras.UiCamera;
+
+                    var screenPoint = camera.WorldToScreenPoint(buttonPosition);
+                    screenPoint.x -= MovedCursor ? 30 : 20;
+                    MovedCursor = !MovedCursor;
+
+                    Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Button = {buttonPosition} | Mouse = {Mouse.current.position}");
+
+                    InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
                 }
             }
         }
