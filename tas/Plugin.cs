@@ -67,7 +67,10 @@ public class Plugin : BaseUnityPlugin
             return;
 
         if (!IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Intro)
+        {
+            TotalTime = 0.0f;
             IsTimerRunning = true;
+        }
         else if (IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Credits)
             IsTimerRunning = false;
 
