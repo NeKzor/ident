@@ -5,13 +5,14 @@
  */
 
 using System.Reflection;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 namespace Ident.TAS;
 
-// Extensions which provide a slightly better API for queueing key states to the input system
-// and the ability to access private properties of objects.
+// Extensions which provide a slightly better API for queueing keyboard/mouse states to the input system
+// and the ability to access private fields/properties of objects.
 public static class UnityExtensions
 {
     public static KeyboardState PressKey(this KeyboardState state, Key key)
@@ -28,6 +29,24 @@ public static class UnityExtensions
     {
         InputSystem.QueueStateEvent(keyboard, state);
         return keyboard;
+    }
+    public static MouseState PressButton(this MouseState state, MouseButton button)
+    {
+        return state.WithButton(button, true);
+    }
+    public static MouseState ReleaseButton(this MouseState state, MouseButton button)
+    {
+        return state.WithButton(button, false);
+    }
+    public static Mouse QueueState(this Mouse mouse, MouseState state)
+    {
+        InputSystem.QueueStateEvent(mouse, state);
+        return mouse;
+    }
+    public static Mouse SetPosition(this Mouse mouse, Vector3 screenPoint)
+    {
+        mouse.WarpCursorPosition(screenPoint);
+        return mouse;
     }
     public static T GetField<T>(this object @object, string name, System.Type type)
     {

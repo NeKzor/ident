@@ -64,6 +64,8 @@ public class DialogueManager_Update
                             break;
                         }
 
+                        // Move the mouse to the button position and select it.
+
                         var (buttonIndex, requiredButtonText) = buttonStrategy;
                         var m_choiceButtons = ___m_DialogueUI
                             .GetField<List<ChoiceButton>>("m_choiceButtons", typeof(DialogueUIPanel));
@@ -76,9 +78,8 @@ public class DialogueManager_Update
                         screenPoint.x -= MovedCursor ? 30 : 20;
                         MovedCursor = !MovedCursor;
 
-                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Button = {buttonPosition}");
-
-                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
+                        InputSystem.GetDevice<Mouse>()
+                            .SetPosition(screenPoint);
 
                         if (choiceButton.button is not UnityEngine.UI.Button button)
                             break;
@@ -109,11 +110,9 @@ public class DialogueManager_Update
                         screenPoint.x -= MovedCursor ? 30 : 20;
                         MovedCursor = !MovedCursor;
 
-                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Button = {buttonPosition}");
-
-                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
-
-                        InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() { }.WithButton(MouseButton.Left));
+                        InputSystem.GetDevice<Mouse>()
+                            .SetPosition(screenPoint)
+                            .QueueState(new MouseState().PressButton(MouseButton.Left));
 
                         InputSystem.GetDevice<Keyboard>()
                             .QueueState(new KeyboardState().PressKey(Key.Space))
@@ -190,39 +189,18 @@ public class DialogueManager_Update
                             break;
                         }
 
-                        // Otherwise, move until the cursor highlights the hotspot location.
+                        // Otherwise, move the mouse to the hotspot location.
 
                         var hotspotPosition = nextHotspot.GetViewportPosition();
                         var camera = GameManager.Instance.Cameras.UiCamera;
 
                         var screenPoint = camera.ViewportToScreenPoint(hotspotPosition);
-                        screenPoint.y += MovedCursor ? 1 : 0;
                         screenPoint.x += MovedCursor ? 1 : 0;
                         MovedCursor = !MovedCursor;
 
-                        Plugin.Log.LogInfo($"Want to move mouse to = {screenPoint} | Hotspot = {hotspotPosition} | Mouse = {Mouse.current.position}");
-
-                        InputSystem.GetDevice<Mouse>().WarpCursorPosition(screenPoint);
-
-                        InputSystem.QueueStateEvent(InputSystem.GetDevice<Mouse>(), new MouseState() { }.WithButton(MouseButton.Left));
-
-                        // var state = new KeyboardState();
-                        // var hotspotPosition = nextHotspot.GetViewportPosition();
-                        // var cursorPosition = cursor.position;
-
-                        // Plugin.Log.LogInfo($"Target = {hotspotPosition} | Cursor = {cursorPosition}");
-
-                        // if (hotspotPosition.x > cursorPosition.x)
-                        //     state = state.PressKey(Key.RightArrow).ReleaseKey(Key.LeftArrow);
-                        // else if (hotspotPosition.x < cursorPosition.x)
-                        //     state = state.PressKey(Key.LeftArrow).ReleaseKey(Key.RightArrow);
-
-                        // if (hotspotPosition.y > cursorPosition.y)
-                        //     state = state.PressKey(Key.UpArrow).ReleaseKey(Key.DownArrow);
-                        // else if (hotspotPosition.y < cursorPosition.y)
-                        //     state = state.PressKey(Key.DownArrow).ReleaseKey(Key.UpArrow);
-
-                        // InputSystem.GetDevice<Keyboard>().QueueState(state);
+                        InputSystem.GetDevice<Mouse>()
+                            .SetPosition(screenPoint)
+                            .QueueState(new MouseState().PressButton(MouseButton.Left));
 
                         break;
                     }
