@@ -50,7 +50,7 @@ public class Plugin : BaseUnityPlugin
         Log = Logger;
         Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
 
-        Logger.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+        Logger.LogInfo($"Loaded {PluginInfo.PLUGIN_NAME} {PluginInfo.PLUGIN_VERSION} by NeKz :^)");
     }
 
     // Start, stop or update the speedrun timer.
