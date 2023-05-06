@@ -8,9 +8,6 @@
  * 
  * Story files are written with the ink scripting language.
  *      https://www.inklestudios.com/ink
- * 
- * Ink runtime version 20 is needed which is release version 1.0.0.
- *      https://github.com/inkle/ink/releases/tag/v1.0.0
  */
 
 using System.Diagnostics;
