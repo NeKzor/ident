@@ -21,7 +21,7 @@ using static System.Diagnostics.Trace;
 
 var start = DateTime.Now;
 var rootFolder = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "../../../../");
-var generateTas = true;
+var generateTas = args.ElementAtOrDefault(1)?.ToLower() == "tas";
 
 // Supported languages
 var languages = new List<string>()
