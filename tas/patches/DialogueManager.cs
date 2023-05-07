@@ -34,8 +34,6 @@ public class DialogueManager_Update
             {
                 case DialogueManager.State.Dialogue:
                     {
-                        Plugin.Log.LogInfo("Continue");
-
                         InputSystem.GetDevice<Keyboard>()
                             .QueueState(new KeyboardState().PressKey(Key.P))
                             .QueueState(new KeyboardState().ReleaseKey(Key.P));
@@ -44,8 +42,6 @@ public class DialogueManager_Update
                     }
                 case DialogueManager.State.Choice:
                     {
-                        Plugin.Log.LogInfo("Choose");
-
                         // Get all route options based on the current conversation.
 
                         var conversation = __instance.conversation.info;
@@ -98,8 +94,6 @@ public class DialogueManager_Update
                     }
                 case DialogueManager.State.NonChoiceButton:
                     {
-                        Plugin.Log.LogInfo("Defrag/Stitch/End");
-
                         var m_StitchButton = ___m_DialogueUI
                             .GetField<UnityEngine.GameObject>("m_StitchButton", typeof(DialogueUIPanel));
 
@@ -130,8 +124,6 @@ public class DialogueManager_Update
             {
                 case Scene.Intro:
                     {
-                        Plugin.Log.LogInfo("Skip");
-
                         InputSystem.GetDevice<Keyboard>()
                             .QueueState(new KeyboardState().PressKey(Key.Escape))
                             .QueueState(new KeyboardState().ReleaseKey(Key.Escape));

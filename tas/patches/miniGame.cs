@@ -30,8 +30,6 @@ public class miniGame_Update
             && __instance.menuObjectLink.isFullyVisible
             && !__instance.animator.IsRunning())
         {
-            Plugin.Log.LogInfo("Pause");
-
             InputSystem.GetDevice<Keyboard>()
                 .QueueState(new KeyboardState().PressKey(Key.Escape))
                 .QueueState(new KeyboardState().ReleaseKey(Key.Escape));
@@ -61,8 +59,6 @@ public class miniGame_Update
 
                 if (hasSelection is true)
                 {
-                    Plugin.Log.LogInfo("Skip");
-
                     InputSystem.GetDevice<Keyboard>()
                         .QueueState(new KeyboardState().PressKey(Key.Space))
                         .QueueState(new KeyboardState().ReleaseKey(Key.Space));
@@ -85,8 +81,6 @@ public class miniGame_Update
         // Continue when the end result screen shows up.
         if (__instance.resultsScreen.menuObjectLink.isVisible)
         {
-            Plugin.Log.LogInfo("Continue");
-
             InputSystem.GetDevice<Keyboard>()
                 .QueueState(new KeyboardState().PressKey(Key.Space))
                 .QueueState(new KeyboardState().ReleaseKey(Key.Space));
