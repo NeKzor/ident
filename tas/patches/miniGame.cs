@@ -15,29 +15,33 @@ namespace Ident.TAS;
 [HarmonyPatch(typeof(miniGame), "Update")]
 public class miniGame_Update
 {
-    public static bool MovedCursor = false;
+    public static bool Buffered = false;
     public static bool Clicked = false;
+    public static bool MovedCursor = false;
 
     private static void Prefix(miniGame __instance, bool ___m_playable)
     {
         if (!Plugin.Instance.IsTimerRunning)
             return;
 
-        // NOTE: The game will buffer our pause input until the animator has finished.
-        // TODO: Buffering does not matter, right?
+        // NOTE: The game will buffer the pause input until the animator has finished.
+
         if (!__instance.menuObjectLink.paused
             && ___m_playable
-            && __instance.menuObjectLink.isFullyVisible
-            && !__instance.animator.IsRunning())
+            && __instance.menuObjectLink.isFullyVisible)
         {
-            InputSystem.GetDevice<Keyboard>()
-                .QueueState(new KeyboardState().PressKey(Key.Escape))
-                .QueueState(new KeyboardState().ReleaseKey(Key.Escape));
+            if (!Buffered && __instance.animator.IsRunning())
+            {
+                Buffered = true;
+                Clicked = false;
 
-            InputSystem.GetDevice<Mouse>()
-                .QueueState(new MouseState().PressButton(MouseButton.Left));
+                InputSystem.GetDevice<Keyboard>()
+                    .QueueState(new KeyboardState().PressKey(Key.Escape))
+                    .QueueState(new KeyboardState().ReleaseKey(Key.Escape));
 
-            Clicked = false;
+                InputSystem.GetDevice<Mouse>()
+                    .QueueState(new MouseState().PressButton(MouseButton.Left));
+            }
         }
 
         // Once paused, find the skip button and select it.
@@ -45,7 +49,9 @@ public class miniGame_Update
         {
             if (!Clicked)
             {
+                Buffered = false;
                 Clicked = true;
+
                 InputSystem.GetDevice<Mouse>()
                     .QueueState(new MouseState().ReleaseButton(MouseButton.Left));
             }
