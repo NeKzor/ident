@@ -72,8 +72,7 @@ public class DialogueManager_Update
                         var camera = GameManager.Instance.Cameras.UiCamera;
 
                         var screenPoint = camera.WorldToScreenPoint(buttonPosition);
-                        screenPoint.x -= MovedCursor ? 30 : 20;
-                        MovedCursor = !MovedCursor;
+                        screenPoint.x -= 20;
 
                         InputSystem.GetDevice<Mouse>()
                             .SetPosition(screenPoint);
@@ -102,8 +101,7 @@ public class DialogueManager_Update
                         var camera = GameManager.Instance.Cameras.UiCamera;
 
                         var screenPoint = camera.WorldToScreenPoint(buttonPosition);
-                        screenPoint.x -= MovedCursor ? 30 : 20;
-                        MovedCursor = !MovedCursor;
+                        screenPoint.x -= 20;
 
                         InputSystem.GetDevice<Mouse>()
                             .SetPosition(screenPoint)
