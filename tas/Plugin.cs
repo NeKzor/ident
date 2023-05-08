@@ -43,6 +43,8 @@ public class Plugin : BaseUnityPlugin
     public float TotalTime { get; private set; } = 0.0f;
     public bool IsTimerRunning { get; private set; } = false;
 
+    public string TotalTimeFormatted { get => System.TimeSpan.FromSeconds(TotalTime).ToString("mm':'ss'.'fff"); }
+
     // Plugin initialization.
     private void Awake()
     {
@@ -72,7 +74,10 @@ public class Plugin : BaseUnityPlugin
             IsTimerRunning = true;
         }
         else if (IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Credits)
+        {
+            Plugin.Log.LogInfo(TotalTimeFormatted);
             IsTimerRunning = false;
+        }
 
         if (IsTimerRunning)
             TotalTime += Time.unscaledDeltaTime;
@@ -85,7 +90,7 @@ public class Plugin : BaseUnityPlugin
 
         GUI.Label(
             new(10, Screen.height - 90, 64, 10),
-            System.TimeSpan.FromSeconds(TotalTime).ToString("mm':'ss'.'fff"),
+            TotalTimeFormatted,
             new()
             {
                 fontSize = 18,

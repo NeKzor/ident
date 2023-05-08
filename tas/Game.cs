@@ -22,4 +22,5 @@ public static class Scene
     public const string Intro = "titlesequence";
     public const string Map = "locMap";
     public const string Credits = "locCredits";
+    public const string NoScene = "";
 }

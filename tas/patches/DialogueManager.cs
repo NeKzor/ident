@@ -18,6 +18,7 @@ namespace Ident.TAS;
 public class DialogueManager_Update
 {
     public static bool MovedCursor = false;
+    public static string LastScene = "";
 
     private static void Prefix(
         DialogueManager __instance,
@@ -196,7 +197,15 @@ public class DialogueManager_Update
 
                         break;
                     }
+                case Scene.NoScene:
+                    {
+                        if (LastScene != __instance.menuConductorLink.sceneHandlerLink.currentScene)
+                            Plugin.Log.LogInfo($"{Plugin.Instance.TotalTimeFormatted} {LastScene}");
+                        break;
+                    }
             }
+
+            LastScene = __instance.menuConductorLink.sceneHandlerLink.currentScene;
         }
     }
 }
