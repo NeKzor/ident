@@ -170,13 +170,7 @@ public class DialogueManager_Update
                         if (m_highlighted == nextHotspot)
                         {
                             InputSystem.GetDevice<Keyboard>()
-                                .QueueState(new KeyboardState()
-                                    .PressKey(Key.Space)
-                                    .ReleaseKey(Key.RightArrow)
-                                    .ReleaseKey(Key.LeftArrow)
-                                    .ReleaseKey(Key.UpArrow)
-                                    .ReleaseKey(Key.DownArrow)
-                                )
+                                .QueueState(new KeyboardState().PressKey(Key.Space))
                                 .QueueState(new KeyboardState().ReleaseKey(Key.Space));
 
                             break;
