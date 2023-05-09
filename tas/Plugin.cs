@@ -42,8 +42,15 @@ public class Plugin : BaseUnityPlugin
 
     public float TotalTime { get; private set; } = 0.0f;
     public bool IsTimerRunning { get; private set; } = false;
+    public float LastSplit { get; private set; } = 0.0f;
 
-    public string TotalTimeFormatted { get => System.TimeSpan.FromSeconds(TotalTime).ToString("mm':'ss'.'fff"); }
+    public string TotalTimeFormatted => System.TimeSpan.FromSeconds(TotalTime).ToString("mm':'ss'.'fff");
+    public string LastDurationFormatted => System.TimeSpan.FromSeconds(TotalTime - LastSplit).ToString("mm':'ss'.'fff");
+
+    public void Split()
+    {
+        LastSplit = TotalTime;
+    }
 
     // Plugin initialization.
     private void Awake()
@@ -71,6 +78,7 @@ public class Plugin : BaseUnityPlugin
         if (!IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Intro)
         {
             TotalTime = 0.0f;
+            LastSplit = 0.0f;
             IsTimerRunning = true;
         }
         else if (IsTimerRunning && gameManager.sceneHandlerLink.currentScene == Scene.Credits)

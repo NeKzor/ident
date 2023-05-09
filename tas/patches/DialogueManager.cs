@@ -192,7 +192,14 @@ public class DialogueManager_Update
                 case Scene.NoScene:
                     {
                         if (LastScene != __instance.menuConductorLink.sceneHandlerLink.currentScene)
-                            Plugin.Log.LogInfo($"{Plugin.Instance.TotalTimeFormatted} {LastScene}");
+                        {
+                            var time = Plugin.Instance.TotalTimeFormatted;
+                            var duration = Plugin.Instance.LastDurationFormatted;
+
+                            Plugin.Log.LogInfo($"{time} | {duration} | {LastScene}");
+
+                            Plugin.Instance.Split();
+                        }
                         break;
                     }
             }
