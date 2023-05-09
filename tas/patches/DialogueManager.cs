@@ -20,7 +20,7 @@ public class DialogueManager_Update
     public static bool MovedCursor = false;
     public static string LastScene = "";
 
-    private static void Prefix(
+    private static void Postfix(
         DialogueManager __instance,
         Ink.Runtime.Story ___m_story,
         DialogueUIPanel ___m_DialogueUI

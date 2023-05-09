@@ -19,7 +19,7 @@ public class miniGame_Update
     public static bool Clicked = false;
     public static bool MovedCursor = false;
 
-    private static void Prefix(miniGame __instance, bool ___m_playable)
+    private static void Postfix(miniGame __instance, bool ___m_playable)
     {
         if (!Plugin.Instance.IsTimerRunning)
             return;
